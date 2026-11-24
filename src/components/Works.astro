@@ -9,8 +9,15 @@ import { projects } from '../data/projects';
        ============================================================ -->
   <div class="w-full border-t border-b border-black/15 py-8 sm:py-12 px-6 sm:px-10 lg:px-16 flex items-center justify-between">
     <div class="flex items-baseline gap-2">
-      <h2 class="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#0B0B0B] uppercase select-none">
-        Works<sup class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B0B0B] ml-1 select-none">6</sup>
+      <h2 id="works-title" class="works-title font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#0B0B0B] uppercase select-none inline-flex items-baseline">
+        {"WORKS".split('').map((char, i) => (
+          <span class="inline-block overflow-hidden pb-1">
+            <span class="works-char inline-block" style={`--char-index: ${i};`}>{char}</span>
+          </span>
+        ))}
+        <span class="inline-block overflow-hidden pb-1">
+          <sup class="works-char inline-block text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B0B0B] ml-1 select-none" style="--char-index: 5;">6</sup>
+        </span>
       </h2>
     </div>
     
@@ -605,6 +612,24 @@ import { projects } from '../data/projects';
     });
   }
 
+    // Observe works title for kinetic wavy reveal
+    const worksTitle = document.getElementById('works-title');
+    if (worksTitle) {
+      const titleObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              worksTitle.classList.add('is-revealed');
+              titleObserver.unobserve(worksTitle);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      titleObserver.observe(worksTitle);
+    }
+  }
+
   // Initialize on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
@@ -616,3 +641,35 @@ import { projects } from '../data/projects';
     initProjectModal();
   }
 </script>
+
+<style>
+  @keyframes worksLetterRise {
+    0% {
+      opacity: 0;
+      transform: translateY(115%) rotate(5deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%) rotate(0deg);
+    }
+  }
+
+  .works-char {
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .works-title.is-revealed .works-char {
+    animation: worksLetterRise 1.05s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+    animation-delay: calc(var(--char-index) * 65ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .works-char {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+</style>

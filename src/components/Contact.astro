@@ -1,0 +1,642 @@
+---
+// src/components/Contact.astro
+// Interactive Telephone Contact Section matching aashishthakuri.com
+// Features animated vintage rotary phone with dynamic coiled cord physics,
+// tactile action pills (SEND MAIL / CHAT WHATSAPP), and vertical social dock.
+
+import { staticWirePath } from '../data/telephone-wire';
+---
+
+<section
+  id="contact"
+  class="contact-page relative w-full bg-[#d5d2cb] text-[#0B0B0B] border-t border-black/15 overflow-hidden select-none"
+  aria-labelledby="contact-title"
+>
+  <!-- Masthead Header -->
+  <header class="contact-masthead w-full border-b border-black/15 py-5 sm:py-7 px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+    <a
+      href="#hero"
+      class="wordmark contact-signature font-display font-extrabold text-base sm:text-lg tracking-tight uppercase leading-none hover:opacity-75 transition-opacity"
+      aria-label="CZTech back to top"
+    >
+      <b>CZ<br />Tech</b>
+    </a>
+    <span class="contact-section-label font-display font-black text-2xl sm:text-3xl text-[#0B0B0B] tracking-tight">
+      Connect
+    </span>
+  </header>
+
+  <!-- Studio Container -->
+  <div class="contact-studio w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10 sm:py-16 md:py-20">
+    <div class="contact-hero grid grid-cols-1 lg:grid-cols-[1.12fr_1fr_56px] items-center gap-10 lg:gap-14 relative min-h-[480px]">
+      
+      <!-- ============================================================
+           LEFT: Interactive Rotary Telephone Scene
+           ============================================================ -->
+      <div class="telephone-scene relative w-full aspect-[3/2] flex items-center justify-center">
+        <div class="connected-phone relative w-full h-full" id="connected-phone" data-phase="seated" data-progress="0.000">
+          
+          <!-- Static SVG Fallback & High-Res Vector Overlay -->
+          <svg
+            class="telephone-still w-full h-auto object-contain select-none pointer-events-none"
+            viewBox="0 0 1536 1024"
+            width="1536"
+            height="1024"
+            role="img"
+            aria-label="A hand lifts the receiver of a vintage rotary telephone, with its cord connected."
+          >
+            <defs>
+              <path id="telephone-wire-static" d={staticWirePath} />
+              <clipPath id="cradle-clip-static">
+                <rect x="850" y="355" width="77" height="114" />
+                <rect x="1154" y="355" width="80" height="114" />
+              </clipPath>
+            </defs>
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <use href="#telephone-wire-static" stroke="#000" stroke-opacity="0.125" stroke-width="16" transform="translate(4 7)" />
+              <use href="#telephone-wire-static" stroke="#101110" stroke-width="14" />
+              <use href="#telephone-wire-static" stroke="#292b28" stroke-width="9" transform="translate(-1 -1)" />
+              <use href="#telephone-wire-static" stroke="#62655e" stroke-width="4" transform="translate(-2 -2)" />
+              <use href="#telephone-wire-static" stroke="#92958b" stroke-width="1.2" transform="translate(-2.7 -2.7)" />
+            </g>
+            <image href="/images/contact/pickup-base.webp" width="1536" height="1024" />
+            <image href="/images/contact/pickup-grip.webp" width="1536" height="1024" />
+            <image href="/images/contact/pickup-base.webp" width="1536" height="1024" clip-path="url(#cradle-clip-static)" />
+          </svg>
+
+          <!-- Canvas is injected here dynamically for 60fps physics -->
+        </div>
+      </div>
+
+      <!-- ============================================================
+           MIDDLE: Copy & Interactive Dual Pill Action Buttons
+           ============================================================ -->
+      <div class="contact-copy flex flex-col justify-center">
+        <!-- Eyebrow -->
+        <p class="contact-eyebrow font-mono text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#D96B43] mb-3">
+          A good idea starts with a hello.
+        </p>
+
+        <!-- Big Headline with Curved Wave Rise -->
+        <h2 id="contact-title" class="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#0B0B0B] leading-[1.04] tracking-tight uppercase mb-5 sm:mb-6">
+          <span class="title-window overflow-hidden block pb-1">
+            <span class="title-line inline-block">Let’s make something</span>
+          </span>
+          <span class="title-window overflow-hidden block pb-1">
+            <span class="title-line inline-block text-[#0B0B0B]">worthy for your brand.</span>
+          </span>
+        </h2>
+
+        <!-- Description -->
+        <p class="contact-brief text-sm sm:text-base md:text-lg text-[#0B0B0B]/75 leading-relaxed max-w-lg mb-8 sm:mb-10 font-normal">
+          You have the vision. I bring design and code to make it real. Tell me what you're building. Let's make it stand out.
+        </p>
+
+        <!-- Action Pills: SEND MAIL & CHAT WHATSAPP -->
+        <div class="hero-actions flex flex-wrap items-center gap-4 sm:gap-5">
+          <!-- SEND MAIL -->
+          <a
+            href="mailto:cztech70@gmail.com"
+            class="contact-tabs group inline-flex items-center text-white text-xs font-mono font-bold tracking-wider uppercase no-underline rounded-lg overflow-hidden shadow-sm transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43]"
+            aria-label="Compose email to cztech70@gmail.com"
+          >
+            <span class="button-part bg-[#222321] group-hover:bg-[#30312e] px-4 py-3 min-h-[44px] flex items-center justify-center border-r border-white/10 transition-colors">
+              <span class="word-window overflow-hidden block h-[1.2em]">
+                <span class="word-roll block group-hover:-translate-y-1/2 transition-transform duration-500 ease-[cubic-bezier(0.22,0.75,0.2,1)]">
+                  <span class="block">SEND</span>
+                  <span class="block" aria-hidden="true">SEND</span>
+                </span>
+              </span>
+            </span>
+            <span class="button-part bg-[#222321] group-hover:bg-[#30312e] px-4 py-3 min-h-[44px] flex items-center justify-center transition-colors">
+              <span class="word-window overflow-hidden block h-[1.2em]">
+                <span class="word-roll block group-hover:-translate-y-1/2 transition-transform duration-500 delay-[45ms] ease-[cubic-bezier(0.22,0.75,0.2,1)]">
+                  <span class="block">MAIL</span>
+                  <span class="block" aria-hidden="true">MAIL</span>
+                </span>
+              </span>
+            </span>
+          </a>
+
+          <!-- CHAT WHATSAPP -->
+          <a
+            href="https://wa.me/923480154301"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-tabs group inline-flex items-center text-white text-xs font-mono font-bold tracking-wider uppercase no-underline rounded-lg overflow-hidden shadow-sm transition-all hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            aria-label="Chat on WhatsApp (+92 348 0154301)"
+          >
+            <span class="button-part bg-[#222321] group-hover:bg-[#30312e] px-4 py-3 min-h-[44px] flex items-center justify-center border-r border-white/10 transition-colors">
+              <span class="word-window overflow-hidden block h-[1.2em]">
+                <span class="word-roll block group-hover:-translate-y-1/2 transition-transform duration-500 ease-[cubic-bezier(0.22,0.75,0.2,1)]">
+                  <span class="block">CHAT</span>
+                  <span class="block" aria-hidden="true">CHAT</span>
+                </span>
+              </span>
+            </span>
+            <span class="button-part bg-[#222321] group-hover:bg-[#30312e] px-4 py-3 min-h-[44px] flex items-center justify-center transition-colors">
+              <span class="word-window overflow-hidden block h-[1.2em]">
+                <span class="word-roll block group-hover:-translate-y-1/2 transition-transform duration-500 delay-[45ms] ease-[cubic-bezier(0.22,0.75,0.2,1)]">
+                  <span class="block">WHATSAPP</span>
+                  <span class="block" aria-hidden="true">WHATSAPP</span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           RIGHT: Tactile Vertical Social Dock
+           ============================================================ -->
+      <nav class="contact-socials flex lg:flex-col items-center justify-center gap-3.5" aria-label="Find Chand Zaib online">
+        <!-- LinkedIn -->
+        <a
+          href="https://www.linkedin.com/in/chand-zaib/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-key w-12 h-12 rounded-xl bg-[#eeeae1] text-[#222524] border border-[#222524] flex items-center justify-center shadow-[inset_0_1px_rgba(255,255,255,0.7),0_4px_#222524,0_6px_10px_rgba(34,37,36,0.1)] hover:bg-[#222524] hover:text-[#f0ede5] hover:shadow-[inset_0_1px_rgba(255,255,255,0.2),0_2px_#222524] transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43]"
+          aria-label="Chand Zaib LinkedIn (opens in new tab)"
+          title="LinkedIn"
+        >
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:-translate-y-0.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5.2 3a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4ZM3.4 9h3.6v12H3.4V9Zm5.8 0h3.5v1.6h.1c.5-1 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.5V21H17v-6c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9.2V9Z" />
+          </svg>
+        </a>
+
+        <!-- X / Twitter -->
+        <a
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-key w-12 h-12 rounded-xl bg-[#eeeae1] text-[#222524] border border-[#222524] flex items-center justify-center shadow-[inset_0_1px_rgba(255,255,255,0.7),0_4px_#222524,0_6px_10px_rgba(34,37,36,0.1)] hover:bg-[#222524] hover:text-[#f0ede5] hover:shadow-[inset_0_1px_rgba(255,255,255,0.2),0_2px_#222524] transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43]"
+          aria-label="X Profile (opens in new tab)"
+          title="X / Twitter"
+        >
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:-translate-y-0.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l8.2-9.5L.8 2h6.5l5.7 6.5L18.9 2Zm-1.1 18h1.8L6.3 3.9H4.4L17.8 20Z" />
+          </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a
+          href="https://github.com/cza786"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-key w-12 h-12 rounded-xl bg-[#eeeae1] text-[#222524] border border-[#222524] flex items-center justify-center shadow-[inset_0_1px_rgba(255,255,255,0.7),0_4px_#222524,0_6px_10px_rgba(34,37,36,0.1)] hover:bg-[#222524] hover:text-[#f0ede5] hover:shadow-[inset_0_1px_rgba(255,255,255,0.2),0_2px_#222524] transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43]"
+          aria-label="Chand Zaib GitHub (opens in new tab)"
+          title="GitHub"
+        >
+          <svg class="w-5 h-5 fill-current transition-transform group-hover:-translate-y-0.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .9a11.1 11.1 0 0 0-3.5 21.6c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.3-1.3-1.6-1.3-1.6-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.1 4.5 18 4.8 18 4.8c.7 1.6.3 2.8.2 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.8 5.4-5.5 5.7.4.4.8 1.1.8 2.2V22c0 .3.2.6.8.5A11.1 11.1 0 0 0 12 .9Z" />
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLIENT SCRIPT: Coiled Telephone Physics & Kinetic Lift Engine
+     ============================================================ -->
+<script>
+  function initTelephone() {
+    const container = document.getElementById('connected-phone');
+    if (!container) return;
+
+    const scene = container.closest('.telephone-scene');
+    if (!scene) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Create dynamic high-resolution canvas
+    const canvas = document.createElement('canvas');
+    canvas.className = 'telephone-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let isLoaded = false;
+    let isIntersecting = false;
+    let isPageIntersecting = false;
+    let animFrame = 0;
+    let lastTime = 0;
+    let animProgressMs = 0; // 0ms to 4700ms
+    let isCleanedUp = false;
+
+    // Telephone geometry constants
+    const pivotX = -240;
+    const pivotY = 240;
+    const wireLayers: [number, string, number][] = [
+      [14, '#101110', 0],
+      [9, '#292b28', -1],
+      [4, '#62655e', -2],
+      [1.2, '#92958b', -2.7]
+    ];
+
+    // Smoothstep quintic curve
+    function smoothstep(val: number): number {
+      const e = Math.max(0, Math.min(1, val));
+      return e * e * e * (e * (6 * e - 15) + 10);
+    }
+
+    // Hand/receiver translation & slight rotation
+    function getHandTransform(progress: number) {
+      return {
+        a: (-10 * Math.PI / 180) * smoothstep((progress - 0.15) / 0.85),
+        y: -120 * progress,
+        x: -45 * progress
+      };
+    }
+
+    // Cubic Bezier interpolation
+    function cubicBezier(
+      p0: { x: number; y: number },
+      p1: { x: number; y: number },
+      p2: { x: number; y: number },
+      p3: { x: number; y: number },
+      t: number
+    ) {
+      const u = 1 - t;
+      return {
+        x: u*u*u*p0.x + 3*u*u*t*p1.x + 3*u*t*t*p2.x + t*t*t*p3.x,
+        y: u*u*u*p0.y + 3*u*u*t*p1.y + 3*u*t*t*p2.y + t*t*t*p3.y
+      };
+    }
+
+    // Coiled cord point computation
+    function computeCordPoints(liftProgress: number, elapsedMs: number) {
+      const handTrans = getHandTransform(liftProgress);
+      const cosA = Math.cos(handTrans.a);
+      const sinA = Math.sin(handTrans.a);
+
+      // Connection point at receiver handset
+      const receiverPt = {
+        x: pivotX + (592 - pivotX) * cosA - (495 - pivotY) * sinA + handTrans.x,
+        y: pivotY + (592 - pivotX) * sinA + (495 - pivotY) * cosA + handTrans.y
+      };
+
+      // Connection point at base
+      const basePt = { x: 770, y: 808 };
+
+      // Spring oscillation after lift completes
+      const springTime = Math.max(0, elapsedMs - 2700) / 1000;
+      const springDamp = Math.sin(8 * springTime) * Math.exp(-3.5 * springTime) * 14 * liftProgress;
+      const midSwayPt = {
+        x: 470 - 90 * liftProgress + springDamp,
+        y: 915 - 15 * liftProgress
+      };
+
+      // 360 Bezier steps
+      const spine: { x: number; y: number }[] = [];
+      for (let s = 0; s <= 360; s++) {
+        const t = s / 360;
+        if (t < 0.62) {
+          spine.push(
+            cubicBezier(
+              receiverPt,
+              { x: receiverPt.x - 125, y: receiverPt.y + 45 },
+              { x: midSwayPt.x - 130, y: midSwayPt.y - 35 },
+              midSwayPt,
+              t / 0.62
+            )
+          );
+        } else {
+          spine.push(
+            cubicBezier(
+              midSwayPt,
+              { x: midSwayPt.x + 90, y: midSwayPt.y + 100 },
+              { x: 690, y: 810 },
+              basePt,
+              (t - 0.62) / 0.38
+            )
+          );
+        }
+      }
+
+      // Arc-length parameterization
+      const lengths = [0];
+      for (let i = 1; i < spine.length; i++) {
+        lengths[i] = lengths[i - 1] + Math.hypot(spine[i].x - spine[i - 1].x, spine[i].y - spine[i - 1].y);
+      }
+      const totalLen = lengths[lengths.length - 1];
+
+      // 900 Coiled spiral wire vertices
+      const coils: { x: number; y: number }[] = [];
+      let bIdx = 1;
+      for (let s = 0; s <= 900; s++) {
+        const u = s / 900;
+        const targetDist = u * totalLen;
+        while (bIdx < 360 && lengths[bIdx] < targetDist) bIdx++;
+
+        const pPrev = spine[bIdx - 1];
+        const pNext = spine[bIdx];
+        const segFrac = (targetDist - lengths[bIdx - 1]) / (lengths[bIdx] - lengths[bIdx - 1] || 1);
+        const dx = pNext.x - pPrev.x;
+        const dy = pNext.y - pPrev.y;
+        const segLen = Math.hypot(dx, dy) || 1;
+
+        // Taper coils at ends
+        const taper = smoothstep(u / 0.055) * smoothstep((1 - u) / 0.05);
+        const angle = u * Math.PI * 78; // 39 complete spiral turns
+        const normalOffset = Math.sin(angle) * (19 - 2 * liftProgress) * taper;
+        const tangentOffset = 11 * Math.cos(angle) * taper;
+
+        coils.push({
+          x: pPrev.x + dx * segFrac - (dy / segLen) * normalOffset + (dx / segLen) * tangentOffset,
+          y: pPrev.y + dy * segFrac + (dx / segLen) * normalOffset + (dy / segLen) * tangentOffset
+        });
+      }
+
+      return coils;
+    }
+
+    let imgBase: HTMLImageElement;
+    let imgGrip: HTMLImageElement;
+
+    function renderScene() {
+      if (!isLoaded || !ctx) return;
+
+      const liftProgress = prefersReducedMotion.matches
+        ? 1
+        : smoothstep((animProgressMs - 650) / 2450);
+
+      ctx.setTransform(canvas.width / 1536, 0, 0, canvas.height / 1274, 0, 0);
+      ctx.clearRect(0, 0, 1536, 1274);
+      ctx.translate(0, 250);
+
+      // Render coiled cord
+      const cord = computeCordPoints(liftProgress, animProgressMs);
+      const wirePath = new Path2D();
+      cord.forEach((pt, i) => {
+        if (i === 0) wirePath.moveTo(pt.x, pt.y);
+        else wirePath.lineTo(pt.x, pt.y);
+      });
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      // Cord soft shadow
+      ctx.save();
+      ctx.translate(4, 7);
+      ctx.strokeStyle = '#00000020';
+      ctx.lineWidth = 16;
+      ctx.stroke(wirePath);
+      ctx.restore();
+
+      // 4-layer 3D Wire Stroke
+      for (const [w, strokeColor, offset] of wireLayers) {
+        ctx.save();
+        ctx.translate(offset, offset);
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = w;
+        ctx.stroke(wirePath);
+        ctx.restore();
+      }
+
+      // Telephone Base
+      ctx.drawImage(imgBase, 0, 0, 1536, 1024);
+
+      // Lifted Hand & Receiver Handset
+      const handTrans = getHandTransform(liftProgress);
+      ctx.save();
+      ctx.translate(pivotX + handTrans.x, pivotY + handTrans.y);
+      ctx.rotate(handTrans.a);
+      ctx.translate(-pivotX, -pivotY);
+      ctx.drawImage(imgGrip, 0, 0, 1536, 1024);
+      ctx.restore();
+
+      // Cradle forks rendered over handset for realistic physical occlusion
+      ctx.drawImage(imgBase, 850, 355, 77, 114, 850, 355, 77, 114);
+      ctx.drawImage(imgBase, 1154, 355, 80, 114, 1154, 355, 80, 114);
+
+      container.dataset.phase = liftProgress === 0 ? 'seated' : liftProgress === 1 ? 'held' : 'lifting';
+      container.dataset.progress = liftProgress.toFixed(3);
+    }
+
+    function resizeCanvas() {
+      const rectWidth = container.getBoundingClientRect().width;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const targetW = Math.round(rectWidth * dpr);
+      const targetH = Math.round((1274 * rectWidth / 1536) * dpr);
+
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+      renderScene();
+    }
+
+    function tick(now: number) {
+      animFrame = 0;
+      if (lastTime) {
+        animProgressMs = Math.min(4700, animProgressMs + Math.min(now - lastTime, 60));
+      }
+      lastTime = now;
+      renderScene();
+
+      if (animProgressMs < 4700 && isIntersecting && isPageIntersecting && !document.hidden) {
+        animFrame = requestAnimationFrame(tick);
+      } else {
+        lastTime = 0;
+      }
+    }
+
+    function startAnimation() {
+      if (isLoaded && isIntersecting && isPageIntersecting && !document.hidden && !animFrame) {
+        if (prefersReducedMotion.matches) {
+          animProgressMs = 4700;
+          renderScene();
+          return;
+        }
+        if (animProgressMs < 4700) {
+          lastTime = 0;
+          animFrame = requestAnimationFrame(tick);
+        }
+      }
+    }
+
+    // Observers
+    const phoneObserver = new IntersectionObserver(
+      (entries) => {
+        isIntersecting = entries[0].isIntersecting;
+        if (isIntersecting) startAnimation();
+        else {
+          cancelAnimationFrame(animFrame);
+          animFrame = 0;
+          lastTime = 0;
+        }
+      },
+      { threshold: 0.15 }
+    );
+    phoneObserver.observe(container);
+
+    const contactSection = container.closest('.contact-page') || scene;
+    const sectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        const wasIntersecting = entry.isIntersecting && !isPageIntersecting;
+        isPageIntersecting = entry.isIntersecting;
+        if (wasIntersecting) {
+          cancelAnimationFrame(animFrame);
+          animFrame = 0;
+          lastTime = 0;
+          animProgressMs = 0;
+          renderScene();
+          startAnimation();
+        } else if (!isPageIntersecting) {
+          cancelAnimationFrame(animFrame);
+          animFrame = 0;
+          lastTime = 0;
+        }
+      },
+      { threshold: 0 }
+    );
+    sectionObserver.observe(contactSection);
+
+    // Text reveal observer
+    const textObserver = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some(e => e.isIntersecting)) return;
+        textObserver.disconnect();
+        
+        contactSection.querySelectorAll('.title-line').forEach((el, idx) => {
+          (el as HTMLElement).style.animation = `contactTitleRise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards ${150 + 120 * idx}ms`;
+        });
+      },
+      { threshold: 0.15 }
+    );
+    textObserver.observe(contactSection);
+
+    const resizeObserver = new ResizeObserver(resizeCanvas);
+    resizeObserver.observe(scene);
+
+    // Load WebP images
+    const loadImg = (src: string) =>
+      new Promise<HTMLImageElement>((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => resolve(img);
+        img.onerror = reject;
+      });
+
+    Promise.all([
+      loadImg('/images/contact/pickup-base.webp'),
+      loadImg('/images/contact/pickup-grip.webp')
+    ])
+      .then(([base, grip]) => {
+        if (isCleanedUp) return;
+        imgBase = base;
+        imgGrip = grip;
+        isLoaded = true;
+        resizeCanvas();
+        container.appendChild(canvas);
+        container.classList.add('motion-ready');
+        startAnimation();
+      })
+      .catch((err) => {
+        console.warn('Fallback to static SVG phone representation:', err);
+      });
+  }
+
+  // Initialize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTelephone);
+  } else {
+    initTelephone();
+  }
+</script>
+
+<style>
+  /* ============================================================
+     CONTACT SECTION CORE STYLES
+     ============================================================ */
+  .contact-page {
+    --contact-bg: #d5d2cb;
+    background-color: var(--contact-bg);
+  }
+
+  .contact-page .telephone-scene {
+    isolation: isolate;
+  }
+
+  .contact-page .connected-phone {
+    aspect-ratio: 3 / 2;
+    transform: translateY(-4%);
+  }
+
+  .contact-page .connected-phone > .telephone-still {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Once canvas is loaded and ready, hide static SVG smoothly */
+  .contact-page .connected-phone.motion-ready > .telephone-still {
+    visibility: hidden;
+  }
+
+  .contact-page :global(.telephone-canvas) {
+    pointer-events: none;
+    width: 100%;
+    height: 124.414%;
+    position: absolute;
+    top: -24.4141%;
+    left: 0;
+  }
+
+  /* Title Wavy / Curved Text Rise */
+  @keyframes contactTitleRise {
+    0% {
+      opacity: 0;
+      transform: translateY(115%) rotate(3deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%) rotate(0deg);
+    }
+  }
+
+  .title-line {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* Tactile Pill Buttons */
+  .contact-tabs {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .contact-tabs:before {
+    content: "";
+    z-index: -1;
+    background: #222321;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    right: 18px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+  }
+
+  /* Tactile Social Keypress */
+  .social-key:active {
+    transform: translateY(3px);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 1px #222524 !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .title-line {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .word-roll {
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>

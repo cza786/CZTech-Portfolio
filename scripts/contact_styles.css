@@ -1,0 +1,151 @@
+.landing[data-initial-section=projects]:not([data-route-ready])>.brand-marquee,.landing[data-initial-section=services]:not([data-route-ready])>.brand-marquee,.landing[data-initial-section=contact]:not([data-route-ready])>:is(.stage,.about-page,.brand-marquee,.projects-page,.services-page){display:none}
+
+.landing[data-initial-section=contact],:is(html:has(.landing[data-initial-section=contact]),body:has(.landing[data-initial-section=contact])){background:#d5d2cb}
+
+.contact-page{color:#000;--secondary:"DM Mono Portfolio",var(--mono);--primary:var(--display);isolation:isolate;width:100%;height:var(--connect-height);box-sizing:content-box;min-height:0;padding-bottom:var(--connect-tail);background:#d5d2cb;flex-direction:column;margin:0;display:flex;position:relative;overflow-x:clip}
+
+.contact-page header{flex:0 0 80px;height:80px;min-height:0;position:relative}
+
+.contact-page .contact-studio{flex:1;width:calc(100% - 6vw);max-width:none;min-height:0;margin:0 3vw;padding:0 0 18px;display:block}
+
+.contact-page .contact-hero{grid-template-columns:minmax(0,1.06fr) minmax(0,1fr) 52px;align-items:center;gap:3%;height:100%;min-height:0;display:grid;position:relative}
+
+.contact-page .telephone-scene{isolation:isolate;width:100%;min-width:0;height:100%;min-height:0;position:relative;container-type:size}
+
+.contact-page .connected-phone{aspect-ratio:3/2;width:min(100% + 3vw,120cqh);position:absolute;top:50%;left:-3vw;transform:translateY(-38%)}
+
+.contact-page .connected-phone>.telephone-still{object-fit:contain;width:100%;height:auto;display:block}
+
+.contact-page .connected-phone.motion-ready>.telephone-still{visibility:hidden}
+
+.contact-page .telephone-canvas{pointer-events:none;width:100%;height:124.414%;position:absolute;top:-24.4141%;left:0}
+
+.contact-page .contact-copy{min-width:0;padding:0 2% 0 0;position:relative;translate:0 clamp(12px,2.5dvh,28px);container-type:inline-size}
+
+.contact-page .contact-eyebrow{font:400 clamp(16px,1.35vw,22px)/1.4 var(--secondary);letter-spacing:0;margin:0 0 clamp(16px,3vh,32px)}
+
+.contact-page .contact-copy h2{font:700 min(9cqi,9.5dvh,98px)/1.04 var(--primary);letter-spacing:-.05em;margin:0 0 clamp(18px,3vh,30px)}
+
+.contact-page .title-window{margin-bottom:-.12em;padding-bottom:.12em;display:block;overflow:hidden}
+
+.contact-page .title-window>span{white-space:nowrap;display:block}
+
+.contact-page .contact-brief{max-width:440px;margin:0 0 clamp(22px,4vh,36px);font:400 clamp(18px,min(1.7vw,3.3dvh),26px)/1.4 Arial,Helvetica,sans-serif}
+
+.contact-page .hero-actions{flex-wrap:wrap;align-items:center;gap:12px 20px;display:flex}
+
+.contact-page .contact-tabs{color:#fff;isolation:isolate;text-transform:uppercase;white-space:nowrap;font:12px / 1 "DM Mono Portfolio", var(--mono);background:0 0;border:0;gap:4px;padding:0;text-decoration:none;display:inline-flex;position:relative}
+
+.contact-page .contact-tabs:before{content:"";z-index:-1;background:#222321;height:24px;position:absolute;top:50%;left:20px;right:20px;transform:translateY(-50%)}
+
+.contact-page .button-part{background:#222321;border-radius:9px;place-items:center;min-height:44px;padding:0 19px;transition:background .3s;display:grid;position:relative}
+
+.contact-page .word-window{height:1.2em;line-height:1.2;display:block;overflow:hidden}
+
+.contact-page .word-roll{transition:transform .55s cubic-bezier(.22,.75,.2,1);display:block}
+
+.contact-page .word-roll>span{white-space:nowrap;height:1.2em;line-height:1.2;display:block}
+
+.contact-page .button-part:nth-child(2) .word-roll{transition-delay:45ms}
+
+.contact-page .contact-tabs:focus-visible{outline-offset:5px;outline:2px solid #527484}
+
+.contact-page .contact-tabs:focus-visible .word-roll{transform:translateY(-50%)}
+
+.contact-page .contact-tabs:hover .word-roll{transform:translateY(-50%)}
+
+.contact-page .contact-tabs:hover .button-part,.contact-page .contact-tabs:hover:before{background:#30312e}
+
+.contact-page .contact-socials{flex-direction:column;justify-content:center;align-self:center;align-items:center;gap:14px;min-width:0;display:flex;translate:0 clamp(12px,2.5dvh,28px)}
+
+.contact-page .social-key{color:#222524;background:#eeeae1;border:1px solid #222524;border-radius:12px;place-items:center;width:48px;height:48px;text-decoration:none;transition:background .25s,color .25s,box-shadow .25s;display:grid;box-shadow:inset 0 1px #ffffffb0,0 4px #222524,0 6px 10px #22252418}
+
+.contact-page .social-key svg{fill:currentColor;width:23px;height:23px;transition:transform .35s cubic-bezier(.2,.8,.2,1);display:block}
+
+.contact-page .social-key:focus-visible{outline-offset:4px;color:#f0ede5;background:#222524;outline:2px solid #527484}
+
+.contact-page .social-key:hover{color:#f0ede5;background:#222524;box-shadow:inset 0 1px #ffffff30,0 3px #22252440}
+
+.contact-page .social-key:hover svg{transform:translateY(-2px)}
+
+.contact-page header{flex-basis:128px;gap:10px;height:128px;margin:0 20px;padding:10px 0}
+
+.contact-page .contact-studio{width:calc(100% - 8vw);margin-inline:4vw;padding:8px 0 10px;translate:0 24px}
+
+.contact-page .contact-hero{grid-template-rows:auto minmax(0,1fr);grid-template-columns:minmax(0,1fr) 52px;align-items:stretch;gap:16px}
+
+.contact-page .contact-copy{grid-area:1/1/auto/-1;padding:0;translate:none}
+
+.contact-page .telephone-scene{grid-area:2/1}
+
+.contact-page .connected-phone{width:min(100% + 4vw,120cqh);left:-4vw}
+
+.contact-page .contact-socials{grid-area:2/2;gap:10px;translate:none}
+
+.contact-page .contact-eyebrow{margin-bottom:12px;font-size:clamp(14px,2.8vw,18px)}
+
+.contact-page .contact-copy h2{margin-bottom:14px}
+
+.contact-page .contact-brief{max-width:470px;margin-bottom:18px;font-size:clamp(16px,min(3.6vw,2.6dvh),21px);line-height:1.35}
+
+.contact-page .hero-actions{gap:10px 16px}
+
+.contact-page .contact-tabs{font-size:10px}
+
+.contact-page .button-part{border-radius:8px;min-height:44px;padding:0 14px}
+
+.contact-page .contact-tabs:before{height:22px}
+
+.contact-page header{flex-basis:114px;gap:6px;height:114px;padding:6px 0}
+
+.contact-page .contact-studio{padding-top:4px}
+
+.contact-page .contact-eyebrow{margin-bottom:8px}
+
+.contact-page .contact-copy h2{margin-bottom:10px}
+
+.contact-page .contact-brief{margin-bottom:12px;font-size:16px}
+
+.contact-page .contact-hero{gap:8px}
+
+.contact-page .button-part{min-height:44px;padding:0 12px}
+
+.contact-page header{flex-wrap:nowrap;flex-basis:76px;gap:12px;height:76px;margin:0 3vw;padding:0}
+
+.contact-page .contact-studio{padding-bottom:8px}
+
+.contact-page .contact-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.12fr) 44px;gap:2%}
+
+.contact-page .contact-copy h2{margin-bottom:12px}
+
+.contact-page .contact-eyebrow{margin-bottom:10px;font-size:14px}
+
+.contact-page .contact-brief{max-width:340px;margin-bottom:14px;font-size:16px}
+
+.contact-page .contact-tabs{font-size:10px}
+
+.contact-page .button-part{min-height:44px;padding:0 12px}
+
+.contact-page .hero-actions{gap:10px}
+
+.contact-page *,.contact-page :before{transition:none!important;animation:none!important}
+
+.contact-page .contact-tabs:hover .word-roll,.contact-page .contact-tabs:focus-visible .word-roll{transform:none}
+
+.contact-page .contact-masthead{margin:0 var(--page-gutter);justify-content:space-between;align-items:center;display:flex}
+
+.contact-section-label{color:#000;font:700 clamp(20px,2vw,30px)/1 var(--display);letter-spacing:-.045em}
+
+.contact-page .social-key:active{translate:0 3px;box-shadow:inset 0 1px #ffffff30,0 1px #222524}
+
+.contact-page .contact-signature{color:inherit;align-items:center;min-height:44px;text-decoration:none;display:flex}
+
+.contact-page .contact-signature b{line-height:.82;display:block}
+
+.contact-page a:focus-visible{outline-offset:5px;outline:2px solid #527484}
+
+.contact-page .contact-masthead{flex-basis:76px;height:76px;padding:0}
+
+.contact-page{min-height:650px}
+
+.contact-page{min-height:420px}

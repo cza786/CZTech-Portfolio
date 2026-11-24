@@ -163,10 +163,21 @@ const { grid, sky, vectorLines } = layers;
     class="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto w-full pt-20 pb-24 md:py-0"
     data-jev-element="headline-container"
   >
-    <h1 class="font-display font-black uppercase text-[#0B0B0B] tracking-[-0.03em] leading-[1.05] text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] flex flex-col items-center justify-center">
+    <h1 class="font-display font-black uppercase text-[#0B0B0B] tracking-[-0.03em] leading-[1.05] text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.25rem] flex flex-col items-center justify-center">
       <!-- Line 1: Flex row with AI AGENTS + Interactive Tablet Presentation + SOFTWARE -->
       <span class="inline-flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-6 gap-y-2">
-        <span class="whitespace-nowrap">{headline.line1.leftText}</span>
+        <!-- AI AGENTS with Kinetic Wave Character Rise -->
+        <span class="whitespace-nowrap inline-flex">
+          {"AI AGENTS".split('').map((char, i) => (
+            char === ' ' ? (
+              <span class="inline-block w-[0.28em]">&nbsp;</span>
+            ) : (
+              <span class="inline-block overflow-hidden pb-1">
+                <span class="hero-char inline-block" style={`--char-index: ${i}; --char-delay-base: 80ms;`}>{char}</span>
+              </span>
+            )
+          ))}
+        </span>
         
         <!-- Interactive Tablet Presentation Showcase (Looping Works Screens: Left & Right Alternating) -->
         <a
@@ -231,12 +242,37 @@ const { grid, sky, vectorLines } = layers;
           </div>
         </a>
 
-        <span class="whitespace-nowrap">{headline.line1.rightText}</span>
+        <!-- SOFTWARE with Kinetic Wave Character Rise -->
+        <span class="whitespace-nowrap inline-flex">
+          {"SOFTWARE".split('').map((char, i) => (
+            char === ' ' ? (
+              <span class="inline-block w-[0.28em]">&nbsp;</span>
+            ) : (
+              <span class="inline-block overflow-hidden pb-1">
+                <span class="hero-char inline-block" style={`--char-index: ${i}; --char-delay-base: 420ms;`}>{char}</span>
+              </span>
+            )
+          ))}
+        </span>
       </span>
 
-      <!-- Line 2: SMART TECH, REAL GROWTH. -->
-      <span class="block mt-2 sm:mt-3 md:mt-4 whitespace-nowrap">
-        {headline.line2}
+      <!-- Line 2: SMART TECH, REAL GROWTH. with Undulating Wavy Rise (Never Breaks Words) -->
+      <span class="block mt-2 sm:mt-3 md:mt-4 inline-flex justify-center flex-wrap gap-x-3 sm:gap-x-4">
+        {("SMART TECH, REAL GROWTH.".split(' ')).map((word, wordIdx, wordsArr) => {
+          const priorLen = wordsArr.slice(0, wordIdx).join(' ').length + (wordIdx > 0 ? 1 : 0);
+          return (
+            <span class="whitespace-nowrap inline-flex">
+              {word.split('').map((char, charIdx) => {
+                const globalIdx = priorLen + charIdx;
+                return (
+                  <span class="inline-block overflow-hidden pb-1">
+                    <span class="hero-char inline-block" style={`--char-index: ${globalIdx}; --char-delay-base: 720ms;`}>{char}</span>
+                  </span>
+                );
+              })}
+            </span>
+          );
+        })}
       </span>
     </h1>
 
@@ -288,6 +324,29 @@ const { grid, sky, vectorLines } = layers;
   .hero-sky-mask {
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 65%);
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 65%);
+  }
+
+  /* ============================================================
+     Kinetic Wave Character-by-Character Rise Animation
+     Letters rise in an undulating curved wave (staggered delay)
+     ============================================================ */
+  @keyframes heroLetterRise {
+    0% {
+      opacity: 0;
+      transform: translateY(115%) rotate(4deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%) rotate(0deg);
+    }
+  }
+
+  .hero-char {
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: heroLetterRise 1.05s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+    animation-delay: calc(var(--char-delay-base, 80ms) + var(--char-index) * 36ms);
   }
 
   /* ============================================================

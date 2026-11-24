@@ -21,3 +21,8 @@ pnpm-debug.log*
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Chrome temp & test screenshots
+.chrome_temp*
+screenshot_*.png
+test_screen.png
