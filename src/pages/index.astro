@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+---
+
+<Layout title="CZTech | Software & AI Agency — Smart Tech, Real Growth">
+  <main class="w-full">
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- Founder / About Section -->
+    <About />
+
+    <!-- Services Anchor Section to demonstrate smooth scrolling -->
+    <section id="services" class="py-24 px-6 md:px-12 max-w-6xl mx-auto border-t border-black/10">
+      <div class="mb-12">
+        <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#D96B43]">What We Build</span>
+        <h2 class="font-display font-extrabold text-3xl md:text-5xl uppercase tracking-tight mt-2 text-[#0B0B0B]">
+          Engineered for Real Growth
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-white/70 border border-black/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="font-mono text-xs font-bold text-[#D96B43] mb-3">01 / AUTONOMOUS</div>
+          <h3 class="font-display font-bold text-xl uppercase mb-2">AI Agents & Workflows</h3>
+          <p class="text-sm text-black/70 leading-relaxed">
+            Multi-modal AI agents for automated operations, custom voice agents, intelligent assistants, and seamless enterprise system integrations.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white/70 border border-black/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="font-mono text-xs font-bold text-[#D96B43] mb-3">02 / ARCHITECTURE</div>
+          <h3 class="font-display font-bold text-xl uppercase mb-2">Custom Software</h3>
+          <p class="text-sm text-black/70 leading-relaxed">
+            High-velocity web apps, resilient backend cloud architectures, APIs, and business tooling built with modern technology stacks.
+          </p>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-white/70 border border-black/10 shadow-sm hover:shadow-md transition-shadow">
+          <div class="font-mono text-xs font-bold text-[#D96B43] mb-3">03 / CONVERSION</div>
+          <h3 class="font-display font-bold text-xl uppercase mb-2">Digital Growth</h3>
+          <p class="text-sm text-black/70 leading-relaxed">
+            High-converting digital experiences, targeted growth engines, and conversion rate optimization designed to maximize ROI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Anchor Section -->
+    <section id="work" class="py-20 px-6 md:px-12 max-w-6xl mx-auto border-t border-black/10 text-center">
+      <span class="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#D96B43]">Portfolio & Case Studies</span>
+      <h2 class="font-display font-extrabold text-3xl md:text-4xl uppercase tracking-tight mt-2 mb-8 text-[#0B0B0B]">
+        Proven Impact, Delivered
+      </h2>
+      <a
+        href="#hero"
+        class="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#0B0B0B] hover:text-[#D96B43] transition-colors"
+      >
+        <span>Back to Top</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+      </a>
+    </section>
+  </main>
+</Layout>

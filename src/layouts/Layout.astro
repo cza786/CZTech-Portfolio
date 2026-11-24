@@ -1,0 +1,51 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "CZTech | Software & AI Agency — Smart Tech, Real Growth",
+  description = "CZTech builds intelligent AI agents, robust custom software, high-converting business websites, and scalable digital solutions that drive measurable business growth."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Plus Jakarta Sans (700, 800) & Space Mono (400, 700) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-[#F6F5F1] text-[#0B0B0B] antialiased selection:bg-[#D96B43] selection:text-white min-h-screen">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* Global CSS custom properties & resets */
+  :root {
+    --color-bg: #F6F5F1;
+    --color-dark: #0B0B0B;
+    --color-terracotta: #D96B43;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-dark);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+</style>

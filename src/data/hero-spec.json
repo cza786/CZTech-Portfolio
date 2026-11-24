@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-render.dev/schema/v1.json",
+  "version": "1.0.0",
+  "jev": {
+    "model": "jev-discrete-evaluator",
+    "target": "hero-section",
+    "framework": "astro-tailwind"
+  },
+  "brand": {
+    "name": "CZTech",
+    "href": "/",
+    "label": "CZTech Homepage"
+  },
+  "navLinks": [
+    { "label": "About", "href": "#about" },
+    { "label": "Services", "href": "#services" },
+    { "label": "Work", "href": "#work" },
+    { "label": "Contact", "href": "#contact", "isPill": true }
+  ],
+  "layers": {
+    "grid": {
+      "enabled": true,
+      "size": 48,
+      "backgroundColor": "#F6F5F1",
+      "lineColor": "rgba(0, 0, 0, 0.05)"
+    },
+    "sky": {
+      "src": "/images/hero/sunset-clouds-sky.webp",
+      "fallbackSrc": "/images/hero/sunset-clouds-sky.webp",
+      "alt": "Pastel sunset clouds backdrop",
+      "width": 3168,
+      "height": 739,
+      "heightClass": "h-[55%]",
+      "maskGradient": "linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%)",
+      "loading": "eager",
+      "fetchpriority": "high"
+    },
+    "vectorLines": {
+      "enabled": true,
+      "viewBox": "0 0 1440 900",
+      "stroke": "#9CA3AF",
+      "strokeWidth": 1.2,
+      "opacity": 0.55,
+      "curves": [
+        {
+          "d": "M-50,220 C240,160 380,380 260,540 C140,700 80,480 200,340 C340,180 620,380 720,520 C820,660 960,660 1100,560 C1260,440 1340,240 1500,260",
+          "opacity": 0.55
+        },
+        {
+          "d": "M100,720 C250,580 480,620 480,720 C480,820 280,840 220,740 C160,640 380,600 680,680 C980,760 1180,840 1360,720 C1460,650 1490,520 1520,440",
+          "opacity": 0.55
+        },
+        {
+          "d": "M620,120 C820,80 1020,180 1180,140 C1320,100 1390,160 1480,210",
+          "opacity": 0.45,
+          "dashArray": "4 4"
+        }
+      ]
+    }
+  },
+  "headline": {
+    "line1": {
+      "leftText": "AI AGENTS",
+      "card": {
+        "src": "/images/hero/center-dashboard-card.webp",
+        "fallbackSrc": "/images/hero/center-dashboard-card.png",
+        "alt": "Real-time analytics and agent performance showcase card",
+        "width": 334,
+        "height": 233,
+        "loading": "eager",
+        "fetchpriority": "high"
+      },
+      "rightText": "SOFTWARE"
+    },
+    "line2": "SMART TECH, REAL GROWTH.",
+    "srDescription": "CZTech is a premier software engineering and artificial intelligence agency delivering custom AI agents, automated workflows, modern web platforms, and data-driven digital growth."
+  },
+  "stickers": [
+    {
+      "id": "chatbot",
+      "name": "AI Chatbot Service",
+      "src": "/images/hero/chatbot-sticker.webp",
+      "fallbackSrc": "/images/hero/chatbot-sticker.png",
+      "alt": "AI Chatbot robot & chat bubble sticker",
+      "width": 497,
+      "height": 484,
+      "posClass": "sticker-pos-1",
+      "animClass": "sticker-anim-1",
+      "sizeClass": "w-24 sm:w-32 md:w-40 lg:w-48 xl:w-56",
+      "rotationDeg": -6,
+      "animDuration": "7.2s",
+      "animDelay": "0s"
+    },
+    {
+      "id": "website-laptop",
+      "name": "High-Converting Business Websites",
+      "src": "/images/hero/website-laptop-sticker.webp",
+      "fallbackSrc": "/images/hero/website-laptop-sticker.png",
+      "alt": "Tilted Business Website laptop sticker",
+      "width": 625,
+      "height": 522,
+      "posClass": "sticker-pos-2",
+      "animClass": "sticker-anim-2",
+      "sizeClass": "w-28 sm:w-36 md:w-48 lg:w-56 xl:w-64",
+      "rotationDeg": 6,
+      "animDuration": "8.0s",
+      "animDelay": "0.6s"
+    },
+    {
+      "id": "voice-agent",
+      "name": "AI Voice Agents Solutions",
+      "src": "/images/hero/voice-agent-sticker.webp",
+      "fallbackSrc": "/images/hero/voice-agent-sticker.png",
+      "alt": "VoiceAgents studio microphone & waveform sticker",
+      "width": 273,
+      "height": 488,
+      "posClass": "sticker-pos-3",
+      "animClass": "sticker-anim-3",
+      "sizeClass": "w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32",
+      "rotationDeg": -3,
+      "animDuration": "6.8s",
+      "animDelay": "1.2s"
+    },
+    {
+      "id": "software-solutions",
+      "name": "Custom Software Solutions",
+      "src": "/images/hero/software-solutions-sticker.webp",
+      "fallbackSrc": "/images/hero/software-solutions-sticker.png",
+      "alt": "Software Solutions code window + cloud & gears sticker",
+      "width": 560,
+      "height": 313,
+      "posClass": "sticker-pos-4",
+      "animClass": "sticker-anim-4",
+      "sizeClass": "w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64",
+      "rotationDeg": 0,
+      "animDuration": "7.6s",
+      "animDelay": "0.4s"
+    },
+    {
+      "id": "digital-marketing",
+      "name": "Digital Marketing & Growth Engine",
+      "src": "/images/hero/digital-marketing-sticker.webp",
+      "fallbackSrc": "/images/hero/digital-marketing-sticker.png",
+      "alt": "Digital Marketing megaphone, growth chart & target sticker",
+      "width": 514,
+      "height": 418,
+      "posClass": "sticker-pos-5",
+      "animClass": "sticker-anim-5",
+      "sizeClass": "w-24 sm:w-32 md:w-40 lg:w-48 xl:w-56",
+      "rotationDeg": 3,
+      "animDuration": "8.2s",
+      "animDelay": "1.8s"
+    }
+  ],
+  "cta": {
+    "text": "EXPLORE CZTECH",
+    "href": "#services",
+    "ariaLabel": "Scroll to services"
+  }
+}

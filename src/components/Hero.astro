@@ -1,0 +1,458 @@
+---
+// src/components/Hero.astro
+// Responsive, high-performance Hero Section for CZTech Software & AI Agency
+// Powered by json-render +jev (JSON Evaluator Value / Declarative Generative UI)
+
+import defaultSpec from '../data/hero-spec.json';
+import { evaluateHeroSpec, type JevHeroSpec } from '../lib/json-render-jev';
+
+interface Props {
+  spec?: Partial<JevHeroSpec>;
+}
+
+const { spec: customSpec } = Astro.props;
+// Evaluate and normalize spec via JEV runtime evaluator
+const spec = evaluateHeroSpec({ ...defaultSpec, ...customSpec });
+
+const { brand, navLinks, layers, headline, stickers, cta } = spec;
+const { grid, sky, vectorLines } = layers;
+---
+
+<section
+  id="hero"
+  class="hero-container min-h-screen w-full relative overflow-hidden flex flex-col justify-between select-none"
+  aria-label={`${brand.name} Hero`}
+  data-json-render="v1"
+  data-jev-model={spec.jev.model}
+  data-jev-target={spec.jev.target}
+>
+  <!-- ============================================================
+       LAYER 1: Off-White Grid Base (z-0)
+       Subtle 48px x 48px square grid lines in rgba(0, 0, 0, 0.05)
+       ============================================================ -->
+  {grid.enabled && (
+    <div
+      class="absolute inset-0 z-0 pointer-events-none hero-grid-bg"
+      aria-hidden="true"
+      data-jev-layer="grid"
+    />
+  )}
+
+  <!-- ============================================================
+       LAYER 2: Faded Sunset Sky (z-10)
+       Anchored to top (55% height) with CSS mask-image linear gradient
+       Optimized WebP format with eager high-priority LCP loading
+       ============================================================ -->
+  <div
+    class="absolute top-0 left-0 w-full h-[55%] z-10 pointer-events-none overflow-hidden hero-sky-mask"
+    aria-hidden="true"
+    data-jev-layer="sky"
+  >
+    <picture>
+      <source srcset={sky.src} type="image/webp" />
+      <img
+        src={sky.src}
+        alt={sky.alt}
+        width={sky.width}
+        height={sky.height}
+        class="w-full h-full object-cover object-top select-none"
+        loading={sky.loading}
+        fetchpriority={sky.fetchpriority}
+        decoding="async"
+      />
+    </picture>
+  </div>
+
+  <!-- ============================================================
+       LAYER 3: Looping Vector Line Art (z-10)
+       Thin, organic looping Bezier curves weaving behind text & stickers
+       ============================================================ -->
+  {vectorLines.enabled && (
+    <svg
+      class="absolute inset-0 w-full h-full z-10 pointer-events-none"
+      viewBox={vectorLines.viewBox}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      data-jev-layer="vector-lines"
+    >
+      {vectorLines.curves.map((curve) => (
+        <path
+          d={curve.d}
+          stroke={vectorLines.stroke}
+          stroke-width={vectorLines.strokeWidth}
+          opacity={curve.opacity}
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-dasharray={curve.dashArray}
+        />
+      ))}
+    </svg>
+  )}
+
+  <!-- ============================================================
+       LAYER 4: Top-Left Brand Wordmark (z-30)
+       Positioned at top-6 left-6 md:left-8 in bold black #0B0B0B
+       ============================================================ -->
+  <header class="absolute top-6 left-6 md:left-8 z-30" data-jev-element="brand">
+    <a
+      href={brand.href}
+      class="text-[#0B0B0B] text-2xl md:text-3xl font-extrabold tracking-tight font-display hover:opacity-80 transition-opacity inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43] rounded"
+      aria-label={brand.label}
+    >
+      <span>{brand.name}</span>
+    </a>
+  </header>
+
+  <!-- Optional Top-Right Nav pill for desktop UX polish -->
+  {navLinks && navLinks.length > 0 && (
+    <nav
+      class="hidden md:flex absolute top-7 right-10 z-30 items-center gap-6 font-mono text-xs font-bold tracking-wider uppercase text-[#0B0B0B]"
+      aria-label="Hero navigation"
+      data-jev-element="nav-links"
+    >
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={
+            link.isPill
+              ? "px-3.5 py-1.5 rounded-full border border-black/15 bg-white/70 backdrop-blur-sm shadow-sm hover:border-black transition-all"
+              : "hover:text-[#D96B43] transition-colors"
+          }
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  )}
+
+  <!-- ============================================================
+       LAYER 6: 5 Floating Transparent Service Stickers (z-20)
+       Lightweight WebP images with hardware-accelerated 3D float
+       ============================================================ -->
+  {stickers.map((sticker) => (
+    <div
+      class={`sticker-wrapper ${sticker.posClass} z-20 pointer-events-auto`}
+      title={sticker.name}
+      data-jev-sticker={sticker.id}
+    >
+      <div class={sticker.animClass}>
+        <picture>
+          <source srcset={sticker.src} type="image/webp" />
+          <img
+            src={sticker.fallbackSrc || sticker.src}
+            alt={sticker.alt}
+            width={sticker.width}
+            height={sticker.height}
+            class={`sticker-cutout-light ${sticker.sizeClass} h-auto cursor-pointer select-none`}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  ))}
+
+  <!-- ============================================================
+       LAYER 5: Center Hero Typography + Inline UI Card (z-20)
+       Vertically & horizontally centered container
+       ============================================================ -->
+  <div
+    class="relative z-20 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-6xl mx-auto w-full pt-20 pb-24 md:py-0"
+    data-jev-element="headline-container"
+  >
+    <h1 class="font-display font-black uppercase text-[#0B0B0B] tracking-[-0.03em] leading-[1.05] text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] flex flex-col items-center justify-center">
+      <!-- Line 1: Flex row with AI AGENTS + Inline Dashboard Card + SOFTWARE -->
+      <span class="inline-flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-6 gap-y-2">
+        <span class="whitespace-nowrap">{headline.line1.leftText}</span>
+        <!-- Inline showcase card (Optimized WebP, high-priority LCP) -->
+        <span class="inline-flex items-center mx-1 md:mx-2 align-middle">
+          <picture>
+            <source srcset={headline.line1.card.src} type="image/webp" />
+            <img
+              src={headline.line1.card.src}
+              alt={headline.line1.card.alt}
+              width={headline.line1.card.width}
+              height={headline.line1.card.height}
+              class="w-24 sm:w-32 md:w-40 lg:w-44 h-auto rounded-xl shadow-lg border border-black/10 transition-transform duration-300 hover:scale-105 select-none"
+              loading={headline.line1.card.loading}
+              fetchpriority={headline.line1.card.fetchpriority}
+              decoding="async"
+            />
+          </picture>
+        </span>
+        <span class="whitespace-nowrap">{headline.line1.rightText}</span>
+      </span>
+
+      <!-- Line 2: SMART TECH, REAL GROWTH. -->
+      <span class="block mt-2 sm:mt-3 md:mt-4 whitespace-nowrap">
+        {headline.line2}
+      </span>
+    </h1>
+
+    <p class="sr-only">
+      {headline.srDescription}
+    </p>
+  </div>
+
+  <!-- ============================================================
+       LAYER 7: Bottom-Center CTA (z-30)
+       Anchor link EXPLORE CZTECH smoothly scrolling to #services
+       ============================================================ -->
+  <footer class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 pb-1" data-jev-element="cta">
+    <a
+      href={cta.href}
+      class="group font-mono text-xs md:text-sm font-bold tracking-[0.15em] uppercase text-[#0B0B0B] hover:opacity-70 transition-all inline-flex items-center gap-2 py-1 px-3 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D96B43]"
+      aria-label={cta.ariaLabel}
+    >
+      <span>{cta.text}</span>
+      <svg
+        class="w-3.5 h-3.5 text-[#0B0B0B] transition-transform duration-300 group-hover:translate-y-0.5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </a>
+  </footer>
+</section>
+
+<style>
+  /* ============================================================
+     Layer 1 Grid Background
+     ============================================================ */
+  .hero-grid-bg {
+    background-color: #F6F5F1;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* ============================================================
+     Layer 2 Sunset Sky Mask
+     ============================================================ */
+  .hero-sky-mask {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 45%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  /* ============================================================
+     Layer 6 Lightweight Hardware-Accelerated Sticker Cutout
+     Uses GPU-composited drop-shadow and 3D transforms for 60fps
+     ============================================================ */
+  .sticker-cutout-light {
+    /* Baked crisp white border + terracotta edge in WebP; single soft elevation filter */
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+  }
+
+  .sticker-cutout-light:hover {
+    transform: translate3d(0, -6px, 0) scale(1.06);
+    filter: drop-shadow(0 14px 22px rgba(217, 107, 67, 0.22)) drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+  }
+
+  /* ============================================================
+     Desktop Absolute Positions for the 5 Stickers
+     ============================================================ */
+  .sticker-wrapper {
+    position: absolute;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* 1. Top-Left: top-[8%] left-[4%] */
+  .sticker-pos-1 {
+    top: 8%;
+    left: 4%;
+  }
+
+  /* 2. Top-Right: top-[4%] right-[3%] */
+  .sticker-pos-2 {
+    top: 4%;
+    right: 3%;
+  }
+
+  /* 3. Bottom-Left: bottom-[4%] left-[4%] */
+  .sticker-pos-3 {
+    bottom: 4%;
+    left: 4%;
+  }
+
+  /* 4. Bottom-Center: bottom-[7%] left-1/2 -translate-x-1/2 */
+  .sticker-pos-4 {
+    bottom: 7%;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  /* 5. Bottom-Right: bottom-[4%] right-[4%] */
+  .sticker-pos-5 {
+    bottom: 4%;
+    right: 4%;
+  }
+
+  /* ============================================================
+     Subtle, Lightweight GPU-Accelerated Float Keyframes
+     Strictly animates translate3d() and rotate() on compositor thread
+     ============================================================ */
+  .sticker-anim-1 {
+    animation: float-1 7.2s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .sticker-anim-2 {
+    animation: float-2 8s ease-in-out infinite 0.6s;
+    will-change: transform;
+  }
+
+  .sticker-anim-3 {
+    animation: float-3 6.8s ease-in-out infinite 1.2s;
+    will-change: transform;
+  }
+
+  .sticker-anim-4 {
+    animation: float-4 7.6s ease-in-out infinite 0.4s;
+    will-change: transform;
+  }
+
+  .sticker-anim-5 {
+    animation: float-5 8.2s ease-in-out infinite 1.8s;
+    will-change: transform;
+  }
+
+  @keyframes float-1 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(-6deg);
+    }
+    50% {
+      transform: translate3d(0, -9px, 0) rotate(-4.5deg);
+    }
+  }
+
+  @keyframes float-2 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(6deg);
+    }
+    50% {
+      transform: translate3d(0, -11px, 0) rotate(7.5deg);
+    }
+  }
+
+  @keyframes float-3 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(-3deg);
+    }
+    50% {
+      transform: translate3d(0, -8px, 0) rotate(-1.5deg);
+    }
+  }
+
+  @keyframes float-4 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0) rotate(1deg);
+    }
+  }
+
+  @keyframes float-5 {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) rotate(3deg);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0) rotate(4.5deg);
+    }
+  }
+
+  /* ============================================================
+     Clean Mobile & Tablet Responsiveness
+     ============================================================ */
+  @media (max-width: 1024px) {
+    .sticker-pos-1 {
+      top: 9%;
+      left: 2%;
+    }
+    .sticker-pos-2 {
+      top: 6%;
+      right: 2%;
+    }
+    .sticker-pos-3 {
+      bottom: 5%;
+      left: 2%;
+    }
+    .sticker-pos-4 {
+      bottom: 8%;
+    }
+    .sticker-pos-5 {
+      bottom: 5%;
+      right: 2%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sticker-pos-1 {
+      top: 12%;
+      left: 3%;
+    }
+    .sticker-pos-2 {
+      top: 10%;
+      right: 3%;
+    }
+    .sticker-pos-3 {
+      bottom: 7%;
+      left: 3%;
+    }
+    .sticker-pos-4 {
+      bottom: 12%;
+      left: 50%;
+    }
+    .sticker-pos-5 {
+      bottom: 7%;
+      right: 3%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .sticker-pos-1 {
+      top: 11%;
+      left: 1%;
+    }
+    .sticker-pos-2 {
+      top: 9%;
+      right: 1%;
+    }
+    .sticker-pos-3 {
+      bottom: 8%;
+      left: 2%;
+    }
+    .sticker-pos-4 {
+      bottom: 11%;
+      left: 50%;
+    }
+    .sticker-pos-5 {
+      bottom: 8%;
+      right: 2%;
+    }
+  }
+
+  /* Accessible motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .sticker-anim-1,
+    .sticker-anim-2,
+    .sticker-anim-3,
+    .sticker-anim-4,
+    .sticker-anim-5 {
+      animation: none !important;
+    }
+    .sticker-cutout-light {
+      transition: none !important;
+    }
+  }
+</style>
