@@ -8,53 +8,67 @@ const partnerLogos = [
     name: 'ALMATAR',
     src: '/logos/Almatar-logo.avif',
     alt: 'ALMATAR Oil and Energy Partner',
-    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
   },
   {
     name: 'B.Royals Barbershop',
     src: '/logos/barber-shop-logo-transparent.webp',
     alt: 'B.Royals Barbershop Germany',
-    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
   },
   {
     name: 'Fisch Levy',
     src: '/logos/fisch-levy-logo.webp',
     fallbackSrc: '/logos/fisch-levy-logo.png',
     alt: 'Fisch Levy Germany',
-    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
   },
   {
     name: 'NBMH',
     src: '/logos/NBMH-logo.webp',
     alt: 'Nazeer Begum Memorial Hospital Pakistan',
-    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
   },
   {
     name: 'NTDH',
     src: '/logos/NTDH-logo.webp',
     fallbackSrc: '/logos/NTDH-logo.png',
     alt: 'NTDH International Energy Partner',
-    heightClass: 'h-7 sm:h-8 md:h-9 w-auto',
+    heightClass: 'h-9 sm:h-10 md:h-11 w-auto',
   },
   {
     name: 'Sevpark',
     src: '/logos/sevpark-logo.webp',
     fallbackSrc: '/logos/sevpark-logo.png',
     alt: 'Sevpark Smart Parking Systems',
-    heightClass: 'h-6 sm:h-7 md:h-8 w-auto',
+    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
   },
   {
     name: 'Smart Worker',
     src: '/logos/smart-worker-logo.webp',
     alt: 'Smart Worker Digital Platform',
-    heightClass: 'h-8 sm:h-9 md:h-10 w-auto',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
+  },
+  {
+    name: 'Taverne Kostas',
+    src: '/logos/taverne-kostas.webp',
+    fallbackSrc: '/logos/taverne-kostas.png',
+    alt: 'Taverne Kostas Greek Restaurant Germany',
+    heightClass: 'h-11 sm:h-12 md:h-13 w-auto',
+  },
+  {
+    name: 'Travel Agency',
+    src: '/logos/travel-agency-logo.webp',
+    fallbackSrc: '/logos/travel-agency-logo.png',
+    alt: 'First Class Luxury Travel Agency',
+    heightClass: 'h-10 sm:h-11 md:h-12 w-auto',
   },
 ];
 ---
 
 <section
   id="about"
-  class="relative w-full bg-[#F6F5F1] py-16 sm:py-20 lg:py-28 px-6 sm:px-10 lg:px-16 border-t border-black/10 overflow-hidden"
+  class="relative w-full bg-[#F6F5F1] pt-16 sm:pt-20 lg:pt-24 pb-0 px-6 sm:px-10 lg:px-16 border-t border-black/10 overflow-hidden"
   aria-label="About Chand Zaib"
 >
   <!-- Background ambient grid pattern for seamless continuity with Hero -->
@@ -145,24 +159,24 @@ const partnerLogos = [
          PARTNER & CLIENT LOGOS MARQUEE (Right-to-Left Continuous Loop)
          Positioned under profile photo & founder bio
          ============================================================ -->
-    <div class="mt-10 sm:mt-12 lg:mt-14 pt-6 sm:pt-8 border-t border-black/10">
+    <div class="mt-8 sm:mt-10 lg:mt-12 py-4 sm:py-5 border-y border-black/10">
       
       <!-- Seamless Overflow-Hidden Marquee Track with Edge Fade Mask -->
       <div
-        class="marquee-container -mx-6 sm:-mx-10 lg:-mx-16 relative overflow-hidden select-none py-2 marquee-mask"
+        class="marquee-container -mx-6 sm:-mx-10 lg:-mx-16 relative overflow-hidden select-none marquee-mask"
         role="region"
         aria-label="Partner and client logos carousel"
       >
         <div class="marquee-track flex w-max items-center">
           
-          <!-- Track Set 1 (14 logos) -->
+          <!-- Track Set 1 (18 logos) -->
           <div class="flex items-center gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20">
             {partnerLogos.map((logo) => (
               <div class="logo-item flex items-center justify-center shrink-0">
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  class={`${logo.heightClass} max-w-[140px] sm:max-w-[170px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
+                  class={`${logo.heightClass} max-w-[160px] sm:max-w-[190px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
                   loading="eager"
                   decoding="async"
                 />
@@ -173,7 +187,7 @@ const partnerLogos = [
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  class={`${logo.heightClass} max-w-[140px] sm:max-w-[170px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
+                  class={`${logo.heightClass} max-w-[160px] sm:max-w-[190px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
                   loading="eager"
                   decoding="async"
                 />
@@ -181,25 +195,25 @@ const partnerLogos = [
             ))}
           </div>
 
-          <!-- Track Set 2 (14 logos for seamless -50% loop translation) -->
+          <!-- Track Set 2 (18 logos for seamless -50% loop translation) -->
           <div class="flex items-center gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20" aria-hidden="true">
             {partnerLogos.map((logo) => (
               <div class="logo-item flex items-center justify-center shrink-0">
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  class={`${logo.heightClass} max-w-[140px] sm:max-w-[170px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
+                  class={`${logo.heightClass} max-w-[160px] sm:max-w-[190px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
                   loading="eager"
                   decoding="async"
                 />
               </div>
             ))}
             {partnerLogos.map((logo) => (
-              <div class="logo-item flex items-center justify-center shrink-0">
+              <div class="logo-item flex items-center justify-center shrink-0" aria-hidden="true">
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  class={`${logo.heightClass} max-w-[140px] sm:max-w-[170px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
+                  class={`${logo.heightClass} max-w-[160px] sm:max-w-[190px] object-contain transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105`}
                   loading="eager"
                   decoding="async"
                 />
@@ -219,7 +233,7 @@ const partnerLogos = [
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 36s linear infinite;
   }
 
   .marquee-track:hover {
