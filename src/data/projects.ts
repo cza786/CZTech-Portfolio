@@ -387,5 +387,93 @@ export const projects: Project[] = [
           "Weather-resistant, court-tested legal warning signage and strict privacy-compliant data erasure protocols."
       }
     ]
+  },
+  {
+    id: "taverne-kostas",
+    title: "Taverne Kostas",
+    category: "Full-Stack Gastronomy OS, Floor Plan & Live POS",
+    client: "Taverne Kostas Freigericht",
+    liveUrl: "https://taverne-kostas.de/",
+    heroImage: "/images/projects/taverne-kostas/hero.webp",
+    isMobile: false,
+    description:
+      "A complete hospitality operating system uniting a responsive public Speisekarte, bird's-eye architectural floor plan reservations with digital QR table passes, live waiter POS terminals, and real-time kitchen displays (KDS).",
+    tags: [
+      "Hospitality SaaS",
+      "Real-Time POS",
+      "Kitchen Display (KDS)",
+      "Interactive Floor Plan",
+      "Digital QR Pass",
+      "Enterprise RBAC"
+    ],
+    caseStudy: {
+      headline: "Authentic Greek Gastronomy Meets Real-Time Restaurant Operations.",
+      overview:
+        "Taverne Kostas in Freigericht-Somborn required a modern, end-to-end digital ecosystem to replace fragmented third-party booking platforms, paper kitchen chits, and static PDF menus with a unified hospitality platform.",
+      theProblem:
+        "Traditional gastronomy businesses lose revenue to third-party booking commissions, suffer table misallocation during rush hours, and experience order bottlenecks when waiters carry handwritten tickets between dining rooms and the kitchen.",
+      theStrategy:
+        "Designed an integrated dual-facing architecture: an appetizing public portal with dynamic Speisekarte filtering and interactive 2D floor plan table booking, paired with real-time staff tools including high-speed waiter ordering and an audio-equipped Kitchen Display System (KDS).",
+      theDecisions:
+        "Engineered real-time order dispatch via reactive websockets, instant digital table pass generation with scannable QR authentication, dynamic branded PDF menu compilation, and a 5-tier role-based access control (RBAC) matrix for owners, managers, service staff, and kitchen personnel."
+    },
+    gallery: [
+      {
+        src: "/images/projects/taverne-kostas/speisekarte-catalog.webp",
+        title: "Dynamic Categorized Speisekarte & 1-Click PDF",
+        badge: "Digital Menu",
+        description:
+          "Interactive menu filtering across 10 Greek culinary categories with real-time pricing, dish photography, allergen indicators, and one-click branded PDF downloads."
+      },
+      {
+        src: "/images/projects/taverne-kostas/floorplan-reservation.webp",
+        title: "Architectural Bird's-Eye Floor Plan Seating",
+        badge: "Table Reservation",
+        description:
+          "Interactive visual seating floor plan mapping the Erdgeschoss (11 tables, 56 seats) and Keller Gewölbesaal (17 tables, 85 seats), enabling guests to choose their exact preferred table."
+      },
+      {
+        src: "/images/projects/taverne-kostas/digital-table-pass.webp",
+        title: "Instant Digital Table Pass & Contactless QR",
+        badge: "QR Check-In",
+        description:
+          "Instant booking confirmation generating a digital table pass complete with unique scannable QR code for frictionless, contactless guest check-in upon arrival."
+      },
+      {
+        src: "/images/projects/taverne-kostas/waiter-pos-terminal.webp",
+        title: "High-Speed Waiter POS Terminal",
+        badge: "Live POS",
+        description:
+          "Mobile waiter interface with visual table status, quick-tap menu ordering, automatic bill calculation, and instant kitchen ticket dispatch."
+      },
+      {
+        src: "/images/projects/taverne-kostas/kitchen-display-system.webp",
+        title: "Real-Time Kitchen Display System (KDS)",
+        badge: "Kitchen Ops",
+        description:
+          "Dedicated KDS screen featuring audio chimes for new tickets, preparation timers, status workflows (Waiting, In Prep, Ready), and bump-bar order completion."
+      },
+      {
+        src: "/images/projects/taverne-kostas/admin-menu-management.webp",
+        title: "Live Menu & Pricing Management Suite",
+        badge: "Admin Suite",
+        description:
+          "Centralized management portal allowing staff to adjust dish prices in real time, toggle dietary & allergen tags, mark items sold out, and reorder menu categories."
+      },
+      {
+        src: "/images/projects/taverne-kostas/events-management.webp",
+        title: "Cultural Events & Bouzouki Nights Portal",
+        badge: "Event Marketing",
+        description:
+          "Event scheduling dashboard promoting upcoming Greek live music nights with Bouzouki, Mediterranean wine tastings, barbecue feasts, and holiday galas."
+      },
+      {
+        src: "/images/projects/taverne-kostas/rbac-security-matrix.webp",
+        title: "Enterprise Role-Based Access Control (RBAC)",
+        badge: "Security & Permissions",
+        description:
+          "Granular 5-tier permission matrix defining screen access and operational privileges across Owner, Manager, Staff, Waiter, and Kitchen roles."
+      }
+    ]
   }
 ];
