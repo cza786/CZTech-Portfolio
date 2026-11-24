@@ -1,0 +1,618 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section id="work" class="w-full bg-[#F6F5F1] text-[#0B0B0B] border-b border-black/15">
+  
+  <!-- ============================================================
+       SECTION HEADER: WORKS⁶ (Matching Grotesque Typographic Style)
+       ============================================================ -->
+  <div class="w-full border-t border-b border-black/15 py-8 sm:py-12 px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+    <div class="flex items-baseline gap-2">
+      <h2 class="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#0B0B0B] uppercase select-none">
+        Works<sup class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B0B0B] ml-1 select-none">6</sup>
+      </h2>
+    </div>
+    
+    <div class="hidden sm:flex items-center gap-4 text-xs font-mono font-bold uppercase tracking-wider text-black/60">
+      <span class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Production Systems
+      </span>
+      <span class="text-black/30">/</span>
+      <span>2024 — 2026</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       WORKS GRID: 2-Column Responsive Layout Framed with Hairline Borders
+       ============================================================ -->
+  <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-black/15 border-b border-black/15">
+    {projects.map((project, index) => (
+      <article
+        class={`group relative p-6 sm:p-8 lg:p-12 flex flex-col justify-between transition-colors duration-300 hover:bg-black/[0.015] ${
+          index >= 2 ? 'md:border-t md:border-black/15' : ''
+        }`}
+        data-project-card={project.id}
+      >
+        <!-- Top Image Showcase Container with Camera Corner Tick Marks -->
+        <div class="relative w-full mb-6 sm:mb-8">
+          
+          <!-- Viewfinder Frame with Camera Corner Tick Marks (┌ and ┘) -->
+          <div class="relative w-full aspect-[16/9.2] bg-[#EFECE6] border border-black/10 overflow-hidden rounded-sm flex items-center justify-center p-2 sm:p-3.5">
+            
+            <!-- Viewfinder Corner Tick Marks -->
+            <div class="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-black pointer-events-none z-20"></div>
+            <div class="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-black pointer-events-none z-20"></div>
+
+            <!-- Image Container -->
+            <div class="relative w-full h-full flex items-center justify-center overflow-hidden">
+              
+              {project.isMobile ? (
+                /* Mobile Phone Screen Framing for Mobile Apps */
+                <div class="relative h-full aspect-[9/18.5] max-h-full rounded-[1.3rem] sm:rounded-[1.5rem] p-1 bg-black/90 shadow-xl border border-black/20 flex flex-col items-center">
+                  <!-- Phone Speaker Notch -->
+                  <div class="w-12 h-3 bg-black rounded-b-md absolute top-1 z-30 flex items-center justify-center">
+                    <div class="w-1.5 h-1.5 rounded-full bg-neutral-800"></div>
+                  </div>
+                  <!-- Mobile Screenshot -->
+                  <div class="relative w-full h-full rounded-[1.1rem] sm:rounded-[1.2rem] overflow-hidden bg-white">
+                    <img
+                      src={project.heroImage}
+                      alt={`${project.title} — Home Screen Interface`}
+                      class="pixel-img w-full h-full object-cover object-top"
+                      loading="lazy"
+                      decoding="async"
+                      data-pixel-src={project.heroImage}
+                    />
+                    <!-- Pixelation Canvas Overlay -->
+                    <canvas
+                      class="pixel-canvas absolute inset-0 w-full h-full pointer-events-none z-10 opacity-100 transition-opacity duration-500"
+                    ></canvas>
+                  </div>
+                </div>
+              ) : (
+                /* Desktop Browser Frame for Web Portals */
+                <div class="relative w-full h-full rounded-sm overflow-hidden bg-white shadow-sm border border-black/5 flex flex-col">
+                  <!-- Screenshot -->
+                  <div class="relative w-full h-full overflow-hidden bg-[#fafafa]">
+                    <img
+                      src={project.heroImage}
+                      alt={`${project.title} — Home Screen Interface`}
+                      class="pixel-img w-full h-full object-cover object-left-top transition-transform duration-700 group-hover:scale-[1.015]"
+                      loading="lazy"
+                      decoding="async"
+                      data-pixel-src={project.heroImage}
+                    />
+                    <!-- Pixelation Canvas Overlay -->
+                    <canvas
+                      class="pixel-canvas absolute inset-0 w-full h-full pointer-events-none z-10 opacity-100 transition-opacity duration-500"
+                    ></canvas>
+                  </div>
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Info & Action Controls (Matching Reference Layout) -->
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mt-auto">
+          
+          <!-- Left Info Column -->
+          <div class="flex-1 pr-2">
+            <h3 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight text-[#0B0B0B] group-hover:text-[#D96B43] transition-colors">
+              {project.title}
+            </h3>
+            
+            <p class="text-sm font-medium text-neutral-600 mt-1">
+              {project.category}
+            </p>
+            
+            <p class="text-xs sm:text-sm text-neutral-500 mt-0.5">
+              Client: <span class="text-neutral-800 font-medium">{project.client}</span>
+            </p>
+
+            <p class="text-xs sm:text-sm text-neutral-700 leading-relaxed mt-3 max-w-xl font-normal">
+              {project.description}
+            </p>
+
+            <!-- Tags Pills -->
+            <div class="flex flex-wrap gap-1.5 mt-3 pt-1">
+              {project.tags.slice(0, 3).map((tag) => (
+                <span class="inline-block text-[10px] font-mono font-medium px-2 py-0.5 rounded bg-black/5 text-neutral-700 border border-black/5">
+                  {tag}
+                </span>
+              ))}
+              {project.tags.length > 3 && (
+                <span class="inline-block text-[10px] font-mono text-neutral-500 self-center">
+                  +{project.tags.length - 3}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <!-- Right Pill Button Group: [ VIEW ] [ PROJECT ] -->
+          <div class="shrink-0 self-start sm:self-auto pt-1">
+            <div class="inline-flex rounded-lg overflow-hidden border border-black/20 shadow-sm bg-[#1c1c1c]">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-3.5 py-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white hover:bg-black transition-colors flex items-center gap-1.5"
+                title={`Open live site for ${project.title}`}
+              >
+                <span>View</span>
+                <svg class="w-3 h-3 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+              
+              <button
+                type="button"
+                data-open-modal={project.id}
+                class="px-3.5 py-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-white bg-[#2c2c2c] hover:bg-black border-l border-white/20 transition-colors flex items-center gap-1.5 cursor-pointer"
+                title={`Open case study & gallery for ${project.title}`}
+              >
+                <span>Project</span>
+                <span class="text-[10px] opacity-60">↗</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+    ))}
+  </div>
+
+  <!-- ============================================================
+       CASE STUDY MODAL / DRAWER (Matching Screenshot 4)
+       ============================================================ -->
+  <div
+    id="project-modal"
+    class="fixed inset-0 z-50 invisible opacity-0 transition-all duration-300 pointer-events-none flex items-center justify-center p-3 sm:p-6 lg:p-10"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-project-title"
+  >
+    <!-- Dark Translucent Backdrop -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Modal Card Container -->
+    <div
+      class="relative w-full max-w-6xl max-h-[92vh] bg-[#F6F5F1] text-[#0B0B0B] rounded-xl sm:rounded-2xl shadow-2xl border border-black/20 overflow-hidden flex flex-col z-10 transform scale-95 transition-transform duration-300"
+      id="modal-window"
+    >
+      <!-- Modal Top Navbar -->
+      <header class="w-full px-6 py-4 border-b border-black/15 bg-[#F6F5F1] flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D96B43]">Case Study</span>
+          <span class="text-black/30">/</span>
+          <span id="modal-project-id" class="font-mono text-xs text-neutral-600 uppercase">PROJECT</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- View Live Button -->
+          <a
+            id="modal-live-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-black text-white text-xs font-mono font-bold uppercase tracking-wider hover:bg-[#D96B43] transition-colors"
+          >
+            <span>Visit Live Site</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+
+          <!-- Close Button -->
+          <button
+            type="button"
+            id="modal-close-btn"
+            class="p-2 rounded-lg bg-black/5 hover:bg-black/10 text-black border border-black/10 transition-colors flex items-center justify-center cursor-pointer"
+            aria-label="Close case study dialog"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Modal Body (Two Column Scrollable Layout) -->
+      <div class="overflow-y-auto p-6 sm:p-8 lg:p-12 space-y-10">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          <!-- LEFT COLUMN: Case Study Overview & Accordions -->
+          <div class="lg:col-span-5 flex flex-col justify-start">
+            
+            <h2 id="modal-project-title" class="font-display font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-[#0B0B0B]">
+              Project Title
+            </h2>
+            
+            <p id="modal-headline" class="font-display font-bold text-lg sm:text-xl text-neutral-800 mt-2 leading-snug">
+              Project Headline
+            </p>
+
+            <!-- Tags List -->
+            <div id="modal-tags" class="flex flex-wrap gap-2 mt-4">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Overview -->
+            <p id="modal-overview" class="text-sm text-neutral-700 leading-relaxed mt-6">
+              Project overview goes here.
+            </p>
+
+            <!-- Accordion Breakdown: The Problem, The Strategy, The Decisions -->
+            <div class="mt-8 border-t border-black/15 divide-y divide-black/15">
+              
+              <!-- Accordion 1: The Problem -->
+              <details class="group py-4 cursor-pointer select-none" open>
+                <summary class="flex items-center justify-between font-display font-bold text-base text-neutral-900 list-none">
+                  <span>The problem</span>
+                  <span class="font-mono text-lg font-normal transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div id="modal-problem" class="mt-3 text-sm text-neutral-600 leading-relaxed pl-1 font-normal">
+                  Details about the problem.
+                </div>
+              </details>
+
+              <!-- Accordion 2: The Strategy -->
+              <details class="group py-4 cursor-pointer select-none">
+                <summary class="flex items-center justify-between font-display font-bold text-base text-neutral-900 list-none">
+                  <span>The strategy</span>
+                  <span class="font-mono text-lg font-normal transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div id="modal-strategy" class="mt-3 text-sm text-neutral-600 leading-relaxed pl-1 font-normal">
+                  Details about the strategy.
+                </div>
+              </details>
+
+              <!-- Accordion 3: The Decisions -->
+              <details class="group py-4 cursor-pointer select-none">
+                <summary class="flex items-center justify-between font-display font-bold text-base text-neutral-900 list-none">
+                  <span>The decisions</span>
+                  <span class="font-mono text-lg font-normal transition-transform duration-200 group-open:rotate-45">+</span>
+                </summary>
+                <div id="modal-decisions" class="mt-3 text-sm text-neutral-600 leading-relaxed pl-1 font-normal">
+                  Details about key decisions.
+                </div>
+              </details>
+
+            </div>
+
+            <!-- Mobile Action Button -->
+            <div class="mt-8 pt-4 sm:hidden">
+              <a
+                id="modal-live-link-mobile"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-3 rounded-lg bg-black text-white text-xs font-mono font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2"
+              >
+                <span>Visit Live Site</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Hero Showcase & Gallery Grid of Rest of Pictures -->
+          <div class="lg:col-span-7 flex flex-col space-y-8">
+            
+            <!-- Main Hero Viewfinder Frame -->
+            <div class="relative w-full aspect-[16/9.2] bg-[#EFECE6] border border-black/10 rounded-sm overflow-hidden p-2 sm:p-4">
+              <div class="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-black z-20"></div>
+              <div class="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-black z-20"></div>
+
+              <div id="modal-hero-container" class="relative w-full h-full flex items-center justify-center overflow-hidden">
+                <img
+                  id="modal-hero-img"
+                  src=""
+                  alt="Main Project Interface"
+                  class="w-full h-full object-cover object-top rounded-sm shadow-sm"
+                />
+              </div>
+            </div>
+
+            <!-- Gallery Title & Counter -->
+            <div class="border-t border-black/15 pt-6 flex items-center justify-between">
+              <div>
+                <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#D96B43]">Gallery & Modules</span>
+                <h4 class="font-display font-extrabold text-xl text-neutral-900 mt-0.5">
+                  Extracted Software Interfaces
+                </h4>
+              </div>
+              <span id="modal-gallery-count" class="font-mono text-xs text-neutral-500 font-bold">
+                0 Screens
+              </span>
+            </div>
+
+            <!-- Gallery Cards Grid -->
+            <div id="modal-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Dynamically populated with secondary screenshots -->
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
+     CLIENT SCRIPTS: Pixel Reveal Scroll Engine & Modal Controller
+     ============================================================ -->
+<script define:vars={{ projectsData: projects }}>
+  // ============================================================
+  // 1. Pixel Mosaic Evolve Scroll Animation Engine
+  // ============================================================
+  function initPixelReveal() {
+    const cards = document.querySelectorAll('[data-project-card]');
+
+    cards.forEach((card) => {
+      const img = card.querySelector('.pixel-img');
+      const canvas = card.querySelector('.pixel-canvas');
+      if (!img || !canvas) return;
+
+      let isAnimated = false;
+
+      function runPixelAnimation() {
+        if (isAnimated) return;
+        isAnimated = true;
+
+        // Ensure image is loaded
+        if (!img.complete) {
+          img.onload = () => startCanvasMosaic(img, canvas);
+        } else {
+          startCanvasMosaic(img, canvas);
+        }
+      }
+
+      // Intersection Observer triggers when card scrolls into view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              runPixelAnimation();
+              observer.unobserve(card);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      observer.observe(card);
+
+      // Also allow hover interaction to subtly re-trigger pixel dissolve
+      card.addEventListener('mouseenter', () => {
+        if (canvas.style.opacity === '0') {
+          triggerHoverShimmer(img, canvas);
+        }
+      });
+    });
+  }
+
+  function startCanvasMosaic(img, canvas) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Match canvas internal resolution to client display size
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.floor(rect.width) || 300;
+    const h = Math.floor(rect.height) || 200;
+    canvas.width = w;
+    canvas.height = h;
+
+    // Step progression for pixel block sizes: from chunky mosaic blocks to fine
+    const steps = [24, 16, 10, 6, 3, 1];
+    let stepIndex = 0;
+
+    function renderStep() {
+      if (stepIndex >= steps.length) {
+        // Animation finished: fade out canvas smoothly to reveal crisp img
+        canvas.style.opacity = '0';
+        return;
+      }
+
+      const blockSize = steps[stepIndex];
+      renderPixelated(ctx, img, w, h, blockSize);
+      stepIndex++;
+
+      // Stagger progression over ~650ms total
+      setTimeout(renderStep, 95);
+    }
+
+    renderStep();
+  }
+
+  function renderPixelated(ctx, img, w, h, blockSize) {
+    if (blockSize <= 1) {
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(img, 0, 0, w, h);
+      return;
+    }
+
+    const cols = Math.ceil(w / blockSize);
+    const rows = Math.ceil(h / blockSize);
+
+    // Draw downscaled to offscreen dimensions, then scale up without smoothing
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = cols;
+    offCanvas.height = rows;
+    const offCtx = offCanvas.getContext('2d');
+    if (!offCtx) return;
+
+    offCtx.drawImage(img, 0, 0, cols, rows);
+
+    ctx.imageSmoothingEnabled = false;
+    ctx.clearRect(0, 0, w, h);
+    ctx.drawImage(offCanvas, 0, 0, cols, rows, 0, 0, w, h);
+  }
+
+  function triggerHoverShimmer(img, canvas) {
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    canvas.style.opacity = '0.85';
+    renderPixelated(ctx, img, canvas.width, canvas.height, 8);
+    setTimeout(() => {
+      renderPixelated(ctx, img, canvas.width, canvas.height, 3);
+      setTimeout(() => {
+        canvas.style.opacity = '0';
+      }, 100);
+    }, 120);
+  }
+
+  // ============================================================
+  // 2. Project Case Study Modal Controller
+  // ============================================================
+  function initProjectModal() {
+    const modal = document.getElementById('project-modal');
+    const modalWindow = document.getElementById('modal-window');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    const titleEl = document.getElementById('modal-project-title');
+    const headlineEl = document.getElementById('modal-headline');
+    const idEl = document.getElementById('modal-project-id');
+    const tagsEl = document.getElementById('modal-tags');
+    const overviewEl = document.getElementById('modal-overview');
+    const problemEl = document.getElementById('modal-problem');
+    const strategyEl = document.getElementById('modal-strategy');
+    const decisionsEl = document.getElementById('modal-decisions');
+    const heroImgEl = document.getElementById('modal-hero-img');
+    const heroContainerEl = document.getElementById('modal-hero-container');
+    const liveLinkEl = document.getElementById('modal-live-link');
+    const liveLinkMobileEl = document.getElementById('modal-live-link-mobile');
+    const galleryCountEl = document.getElementById('modal-gallery-count');
+    const galleryGridEl = document.getElementById('modal-gallery-grid');
+
+    if (!modal) return;
+
+    function openModal(projectId) {
+      const project = projectsData.find((p) => p.id === projectId);
+      if (!project) return;
+
+      // Populate text & links
+      if (titleEl) titleEl.textContent = project.title;
+      if (headlineEl) headlineEl.textContent = project.caseStudy.headline;
+      if (idEl) idEl.textContent = project.client;
+      if (overviewEl) overviewEl.textContent = project.caseStudy.overview;
+      if (problemEl) problemEl.textContent = project.caseStudy.theProblem;
+      if (strategyEl) strategyEl.textContent = project.caseStudy.theStrategy;
+      if (decisionsEl) decisionsEl.textContent = project.caseStudy.theDecisions;
+
+      if (liveLinkEl) liveLinkEl.href = project.liveUrl;
+      if (liveLinkMobileEl) liveLinkMobileEl.href = project.liveUrl;
+
+      // Populate tags
+      if (tagsEl) {
+        tagsEl.innerHTML = project.tags
+          .map(
+            (tag) =>
+              `<span class="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-black/5 text-neutral-800 border border-black/10">${tag}</span>`
+          )
+          .join('');
+      }
+
+      // Populate hero image
+      if (heroImgEl) {
+        heroImgEl.src = project.heroImage;
+        heroImgEl.alt = `${project.title} Interface`;
+        if (project.isMobile) {
+          heroImgEl.className = 'h-full max-h-[380px] w-auto object-contain rounded-xl shadow-lg border border-black/10 my-auto';
+        } else {
+          heroImgEl.className = 'w-full h-full object-cover object-top rounded-sm shadow-sm';
+        }
+      }
+
+      // Populate gallery
+      if (galleryGridEl && galleryCountEl) {
+        galleryCountEl.textContent = `${project.gallery.length} Screens`;
+        galleryGridEl.innerHTML = project.gallery
+          .map(
+            (item) => `
+          <div class="bg-[#EFECE6] p-4 rounded-lg border border-black/10 flex flex-col justify-between group/gal hover:border-black/30 transition-all">
+            <div class="relative w-full aspect-[16/10] bg-white rounded overflow-hidden border border-black/10 mb-3 flex items-center justify-center">
+              <div class="absolute top-1 left-1 w-2.5 h-2.5 border-t border-l border-black z-10 pointer-events-none"></div>
+              <div class="absolute bottom-1 right-1 w-2.5 h-2.5 border-b border-r border-black z-10 pointer-events-none"></div>
+              <img
+                src="${item.src}"
+                alt="${item.title}"
+                class="${project.isMobile ? 'h-full w-auto object-contain p-1' : 'w-full h-full object-cover object-top'} transition-transform duration-500 group-hover/gal:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <span class="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#D96B43] mb-1">
+                ${item.badge}
+              </span>
+              <h5 class="font-display font-bold text-sm text-neutral-900 leading-snug">
+                ${item.title}
+              </h5>
+              <p class="text-xs text-neutral-600 mt-1.5 leading-relaxed font-normal">
+                ${item.description}
+              </p>
+            </div>
+          </div>
+        `
+          )
+          .join('');
+      }
+
+      // Show modal
+      modal.classList.remove('invisible', 'opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      if (modalWindow) {
+        modalWindow.classList.remove('scale-95');
+        modalWindow.classList.add('scale-100');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      if (modalWindow) {
+        modalWindow.classList.remove('scale-100');
+        modalWindow.classList.add('scale-95');
+      }
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    // Attach open buttons
+    document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const projectId = btn.getAttribute('data-open-modal');
+        if (projectId) openModal(projectId);
+      });
+    });
+
+    // Close on backdrop click, close button, or ESC key
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initPixelReveal();
+      initProjectModal();
+    });
+  } else {
+    initPixelReveal();
+    initProjectModal();
+  }
+</script>
