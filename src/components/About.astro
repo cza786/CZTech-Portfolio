@@ -85,10 +85,39 @@ const partnerLogos = [
            ============================================================ -->
       <div class="lg:col-span-7 flex flex-col justify-center z-10">
         
-        <!-- Large Stacked Name Heading -->
-        <h2 class="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.92] text-[#0B0B0B] mb-8 select-none">
-          <span class="block">Chand</span>
-          <span class="block">Zaib</span>
+        <!-- Large Stacked Name Heading with Kinetic Wave Character Rise Animation -->
+        <h2
+          id="about-title"
+          class="about-title font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.92] text-[#0B0B0B] mb-8 select-none"
+        >
+          <span class="block">
+            <span class="inline-flex">
+              {"Chand".split('').map((char, i) => (
+                <span class="inline-block overflow-hidden pb-1">
+                  <span
+                    class="about-char inline-block"
+                    style={`--char-index: ${i}; --char-delay-base: 80ms;`}
+                  >
+                    {char}
+                  </span>
+                </span>
+              ))}
+            </span>
+          </span>
+          <span class="block">
+            <span class="inline-flex">
+              {"Zaib".split('').map((char, i) => (
+                <span class="inline-block overflow-hidden pb-1">
+                  <span
+                    class="about-char inline-block"
+                    style={`--char-index: ${5 + i}; --char-delay-base: 80ms;`}
+                  >
+                    {char}
+                  </span>
+                </span>
+              ))}
+            </span>
+          </span>
         </h2>
 
         <!-- Biography Body Copy -->
@@ -228,7 +257,82 @@ const partnerLogos = [
   </div>
 </section>
 
+<!-- ============================================================
+     CLIENT SCRIPT: About Title Kinetic Wave Reveal
+     ============================================================ -->
+<script>
+  function initAboutTitleReveal() {
+    const aboutTitle = document.getElementById('about-title');
+    if (!aboutTitle) return;
+
+    if (!('IntersectionObserver' in window)) {
+      aboutTitle.classList.add('is-revealed');
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            aboutTitle.classList.add('is-revealed');
+            observer.unobserve(aboutTitle);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(aboutTitle);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAboutTitleReveal);
+  } else {
+    initAboutTitleReveal();
+  }
+</script>
+
 <style>
+  /* ============================================================
+     Kinetic Wave Character-by-Character Rise Animation
+     Matches Hero section title rise animation
+     ============================================================ */
+  @keyframes heroLetterRise {
+    0% {
+      opacity: 0;
+      transform: translateY(115%) rotate(4deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%) rotate(0deg);
+    }
+  }
+
+  .about-char {
+    display: inline-block;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .about-title.is-revealed .about-char {
+    animation: heroLetterRise 1.05s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+    animation-delay: calc(var(--char-delay-base, 80ms) + var(--char-index) * 36ms);
+  }
+
+  @media (scripting: none) {
+    .about-char {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-char {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+  }
   .marquee-track {
     display: flex;
     width: max-content;

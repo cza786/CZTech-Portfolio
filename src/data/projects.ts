@@ -393,7 +393,7 @@ export const projects: Project[] = [
     title: "Taverne Kostas",
     category: "Full-Stack Gastronomy OS, Floor Plan & Live POS",
     client: "Taverne Kostas Freigericht",
-    liveUrl: "https://taverne-kostas.de/",
+    liveUrl: "https://youtu.be/4dzbj_yuDyo?si=gCCJU5zhCoT4htQ5",
     heroImage: "/images/projects/taverne-kostas/hero.webp",
     isMobile: false,
     description:

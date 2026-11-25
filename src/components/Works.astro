@@ -5,18 +5,32 @@ import { projects } from '../data/projects';
 <section id="work" class="w-full bg-[#F6F5F1] text-[#0B0B0B] border-b border-black/15">
   
   <!-- ============================================================
-       SECTION HEADER: WORKS⁶ (Matching Grotesque Typographic Style)
+       SECTION HEADER: WORKS⁶ (Matching Grotesque Typographic Style & Image Spec)
        ============================================================ -->
-  <div class="w-full border-t border-b border-black/15 py-8 sm:py-12 px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-    <div class="flex items-baseline gap-2">
-      <h2 id="works-title" class="works-title font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#0B0B0B] uppercase select-none inline-flex items-baseline">
-        {"WORKS".split('').map((char, i) => (
-          <span class="inline-block overflow-hidden pb-1">
-            <span class="works-char inline-block" style={`--char-index: ${i};`}>{char}</span>
-          </span>
-        ))}
-        <span class="inline-block overflow-hidden pb-1">
-          <sup class="works-char inline-block text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B0B0B] ml-1 select-none" style="--char-index: 5;">{projects.length}</sup>
+  <div class="w-full border-t border-b border-black/15 py-8 sm:py-12 lg:py-16 px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+    <div class="flex items-start">
+      <h2
+        id="works-title"
+        class="works-title font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-[-0.03em] leading-none text-[#0B0B0B] uppercase select-none inline-flex items-start"
+      >
+        <span class="inline-flex">
+          {"WORKS".split('').map((char, i) => (
+            <span class="inline-block overflow-hidden pt-1 pb-2">
+              <span class="works-char inline-block" style={`--char-index: ${i};`}>{char}</span>
+            </span>
+          ))}
+        </span>
+        <span class="inline-flex self-start items-start ml-1.5 sm:ml-2.5 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none">
+          {String(projects.length).split('').map((digit, dIdx) => (
+            <span class="inline-block overflow-hidden pt-1 pb-2 px-0.5 leading-none">
+              <span
+                class="works-char inline-block font-black text-[#0B0B0B] leading-none select-none"
+                style={`--char-index: ${5 + dIdx};`}
+              >
+                {digit}
+              </span>
+            </span>
+          ))}
         </span>
       </h2>
     </div>
@@ -612,22 +626,30 @@ import { projects } from '../data/projects';
     });
   }
 
-    // Observe works title for kinetic wavy reveal
+  // ============================================================
+  // 3. Works Title Kinetic Wave Reveal Observer
+  // ============================================================
+  function initWorksTitleReveal() {
     const worksTitle = document.getElementById('works-title');
-    if (worksTitle) {
-      const titleObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              worksTitle.classList.add('is-revealed');
-              titleObserver.unobserve(worksTitle);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      titleObserver.observe(worksTitle);
+    if (!worksTitle) return;
+
+    if (!('IntersectionObserver' in window)) {
+      worksTitle.classList.add('is-revealed');
+      return;
     }
+
+    const titleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            worksTitle.classList.add('is-revealed');
+            titleObserver.unobserve(worksTitle);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    titleObserver.observe(worksTitle);
   }
 
   // Initialize on DOM ready
@@ -635,18 +657,24 @@ import { projects } from '../data/projects';
     document.addEventListener('DOMContentLoaded', () => {
       initPixelReveal();
       initProjectModal();
+      initWorksTitleReveal();
     });
   } else {
     initPixelReveal();
     initProjectModal();
+    initWorksTitleReveal();
   }
 </script>
 
 <style>
-  @keyframes worksLetterRise {
+  /* ============================================================
+     Kinetic Wave Character-by-Character Rise Animation
+     Matches Hero section title rise animation
+     ============================================================ */
+  @keyframes heroLetterRise {
     0% {
       opacity: 0;
-      transform: translateY(115%) rotate(5deg);
+      transform: translateY(115%) rotate(4deg);
     }
     100% {
       opacity: 1;
@@ -661,8 +689,15 @@ import { projects } from '../data/projects';
   }
 
   .works-title.is-revealed .works-char {
-    animation: worksLetterRise 1.05s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
-    animation-delay: calc(var(--char-index) * 65ms);
+    animation: heroLetterRise 1.05s cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+    animation-delay: calc(var(--char-delay-base, 80ms) + var(--char-index) * 36ms);
+  }
+
+  @media (scripting: none) {
+    .works-char {
+      opacity: 1 !important;
+      transform: none !important;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

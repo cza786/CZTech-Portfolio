@@ -13,7 +13,6 @@
   },
   "navLinks": [
     { "label": "About", "href": "#about" },
-    { "label": "Services", "href": "#services" },
     { "label": "Work", "href": "#work" },
     { "label": "Contact", "href": "#contact", "isPill": true }
   ],
@@ -154,7 +153,7 @@
   ],
   "cta": {
     "text": "EXPLORE CZTECH",
-    "href": "#services",
-    "ariaLabel": "Scroll to services"
+    "href": "#about",
+    "ariaLabel": "Scroll to about section"
   }
 }
