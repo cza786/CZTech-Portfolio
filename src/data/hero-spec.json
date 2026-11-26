@@ -85,7 +85,7 @@
       "height": 484,
       "posClass": "sticker-pos-1",
       "animClass": "sticker-anim-1",
-      "sizeClass": "w-24 sm:w-32 md:w-40 lg:w-48 xl:w-56",
+      "sizeClass": "w-14 sm:w-24 md:w-36 lg:w-48 xl:w-56",
       "rotationDeg": -6,
       "animDuration": "7.2s",
       "animDelay": "0s"
@@ -100,7 +100,7 @@
       "height": 522,
       "posClass": "sticker-pos-2",
       "animClass": "sticker-anim-2",
-      "sizeClass": "w-28 sm:w-36 md:w-48 lg:w-56 xl:w-64",
+      "sizeClass": "w-16 sm:w-28 md:w-40 lg:w-56 xl:w-64",
       "rotationDeg": 6,
       "animDuration": "8.0s",
       "animDelay": "0.6s"
@@ -115,7 +115,7 @@
       "height": 488,
       "posClass": "sticker-pos-3",
       "animClass": "sticker-anim-3",
-      "sizeClass": "w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32",
+      "sizeClass": "w-9 sm:w-14 md:w-20 lg:w-28 xl:w-32",
       "rotationDeg": -3,
       "animDuration": "6.8s",
       "animDelay": "1.2s"
@@ -130,7 +130,7 @@
       "height": 313,
       "posClass": "sticker-pos-4",
       "animClass": "sticker-anim-4",
-      "sizeClass": "w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64",
+      "sizeClass": "w-20 sm:w-32 md:w-44 lg:w-56 xl:w-64",
       "rotationDeg": 0,
       "animDuration": "7.6s",
       "animDelay": "0.4s"
@@ -145,7 +145,7 @@
       "height": 418,
       "posClass": "sticker-pos-5",
       "animClass": "sticker-anim-5",
-      "sizeClass": "w-24 sm:w-32 md:w-40 lg:w-48 xl:w-56",
+      "sizeClass": "w-14 sm:w-24 md:w-36 lg:w-48 xl:w-56",
       "rotationDeg": 3,
       "animDuration": "8.2s",
       "animDelay": "1.8s"
